@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YDPhotoBrowser'
-  s.version          = '1.0.0'
+  s.version          = '1.0'
   s.summary          = 'A easy to use frameworks for browsering image,include rotatation,zoom etc.'
 
 # This description is used to generate tags and improve search results.
@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-   s.dependency 'SDWebImage', '~> 4.4.1'
-   s.dependency 'Masonry', '~> 1.1.0'
-   s.dependency 'SVProgressHUD', '~> 2.2.5'
+   s.dependency 'SDWebImage'
+   s.dependency 'Masonry'
+   s.dependency 'SVProgressHUD'
 end
