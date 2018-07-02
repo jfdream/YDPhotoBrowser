@@ -116,7 +116,7 @@
         _topView.hidden = NO;
         _topImageView.hidden = NO;
         self.hidden = YES;
-        CGRect frame = [[UIApplication sharedApplication].delegate.window convertRect:hiddenImageView.frame toWindow:[UIApplication sharedApplication].delegate.window];
+        CGRect frame = [hiddenImageView.superview convertRect:hiddenImageView.frame toView:[UIApplication sharedApplication].delegate.window];
         [UIView animateWithDuration:0.3 animations:^{
             self->_topImageView.frame = frame;
             self->_topView.alpha = 0.f;
@@ -293,7 +293,7 @@
         _topView.backgroundColor = [UIColor blackColor];
         [topWindow addSubview:_topView];
         
-        CGRect frame = [topWindow convertRect:fromImageView.frame toWindow:topWindow];
+        CGRect frame = [fromImageView.superview convertRect:fromImageView.frame toView:topWindow];
         _topImageView = [[UIImageView alloc] initWithFrame:frame];
         _topImageView.image = fromImageView.image;
         _topImageView.contentMode = UIViewContentModeScaleAspectFit;
