@@ -1,0 +1,16 @@
+PODS:
+  - YDPhotoBrowser (0.1.0)
+
+DEPENDENCIES:
+  - YDPhotoBrowser (from `../`)
+
+EXTERNAL SOURCES:
+  YDPhotoBrowser:
+    :path: ../
+
+SPEC CHECKSUMS:
+  YDPhotoBrowser: 1323f60f68cabb0e12e52115021fe9bd818d0a6f
+
+PODFILE CHECKSUM: 30362b5fc35c8ff8518ff8614c8d29f4888c9163
+
+COCOAPODS: 1.4.0

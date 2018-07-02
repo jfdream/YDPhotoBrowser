@@ -1,0 +1,735 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0989BCD4224E00050D72F957BA47AFBF /* Pods-YDPhotoBrowser_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B18B8ED04C66571EB2BD467885198F /* Pods-YDPhotoBrowser_Example-dummy.m */; };
+		17998CE020E9F66F007EC781 /* YDPhotoScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 17998CDC20E9F66F007EC781 /* YDPhotoScrollView.h */; };
+		17998CE120E9F66F007EC781 /* YDPhotoBrowser.h in Headers */ = {isa = PBXBuildFile; fileRef = 17998CDD20E9F66F007EC781 /* YDPhotoBrowser.h */; };
+		17998CE220E9F66F007EC781 /* YDPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 17998CDE20E9F66F007EC781 /* YDPhotoBrowser.m */; };
+		17998CE320E9F66F007EC781 /* YDPhotoScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17998CDF20E9F66F007EC781 /* YDPhotoScrollView.m */; };
+		2025687E909B7553692B099540A1769D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		3525243C0FDE4E47F981358C1C759637 /* Pods-YDPhotoBrowser_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 323A24DEA8720C679B92CA70AE171CFA /* Pods-YDPhotoBrowser_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4002F2B5717321C6A35A6784D1D32646 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		4DD50F585F054A9703EE494DF907CBF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		A21CC339098AB8F47E8C79FF305DE350 /* Pods-YDPhotoBrowser_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EFF365577B5DE85FC2326942DA7F24D4 /* Pods-YDPhotoBrowser_Tests-dummy.m */; };
+		B9175CCBE7E03BA50D4161458AF55102 /* YDPhotoBrowser-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EBA009FAE0BB7C02350B25EC21B2C94 /* YDPhotoBrowser-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B9A2A2D0B471174128FF10D431B3F85D /* Pods-YDPhotoBrowser_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CC0CDA5D19C3A8DA481FA83880011DBC /* Pods-YDPhotoBrowser_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D352C30B8EE032497B8356D9E431A15F /* YDPhotoBrowser-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9650CB68E8AE4F57894E1DF78783FFCD /* YDPhotoBrowser-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4750072B761979C2A706779B0A555268 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B32A9D8B7794B819814DDCF8E7DAD854;
+			remoteInfo = YDPhotoBrowser;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		008A3783E73F91D9340AF361D5FFE049 /* YDPhotoBrowser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YDPhotoBrowser.xcconfig; sourceTree = "<group>"; };
+		02B5B650E0683B383C8D6F276B26C2A9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BB39171EA2157F68CDB673579F000C6 /* Pods-YDPhotoBrowser_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YDPhotoBrowser_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		0EBA009FAE0BB7C02350B25EC21B2C94 /* YDPhotoBrowser-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YDPhotoBrowser-umbrella.h"; sourceTree = "<group>"; };
+		145E01140C19232A72CAE24F2ECE1A3E /* Pods-YDPhotoBrowser_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YDPhotoBrowser_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		17998CDC20E9F66F007EC781 /* YDPhotoScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YDPhotoScrollView.h; path = YDPhotoBrowser/Classes/YDPhotoScrollView.h; sourceTree = "<group>"; };
+		17998CDD20E9F66F007EC781 /* YDPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YDPhotoBrowser.h; path = YDPhotoBrowser/Classes/YDPhotoBrowser.h; sourceTree = "<group>"; };
+		17998CDE20E9F66F007EC781 /* YDPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YDPhotoBrowser.m; path = YDPhotoBrowser/Classes/YDPhotoBrowser.m; sourceTree = "<group>"; };
+		17998CDF20E9F66F007EC781 /* YDPhotoScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YDPhotoScrollView.m; path = YDPhotoBrowser/Classes/YDPhotoScrollView.m; sourceTree = "<group>"; };
+		1A13BD68D0B3C99915AAEDC5D0CE0955 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2725B9996F39B746A0DA45372476909F /* Pods-YDPhotoBrowser_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YDPhotoBrowser_Tests-resources.sh"; sourceTree = "<group>"; };
+		2D7DCAF91F3842D6B18A2539C61AF3C2 /* Pods-YDPhotoBrowser_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YDPhotoBrowser_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		2FADDDEC7BB507FC7EA86FB5F19DA718 /* Pods-YDPhotoBrowser_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YDPhotoBrowser_Example-resources.sh"; sourceTree = "<group>"; };
+		323A24DEA8720C679B92CA70AE171CFA /* Pods-YDPhotoBrowser_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-YDPhotoBrowser_Example-umbrella.h"; sourceTree = "<group>"; };
+		35EF0023AE561C6C6B79BABEBCF05975 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		36E8C737DD844AD98282CE9E076B15D0 /* Pods_YDPhotoBrowser_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YDPhotoBrowser_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D777B11DA66DCB6D45BD6228B4D4844 /* Pods_YDPhotoBrowser_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YDPhotoBrowser_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50CD894AE3A2F789FE96C41FDCAD8328 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C46D27BA85A75AA02BDF710748B27ED /* Pods-YDPhotoBrowser_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-YDPhotoBrowser_Tests.modulemap"; sourceTree = "<group>"; };
+		5E0ACA261C6F521D3597C23FDFC3AA88 /* Pods-YDPhotoBrowser_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YDPhotoBrowser_Example-frameworks.sh"; sourceTree = "<group>"; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		660F472AD880AA620B2428B5F3767233 /* Pods-YDPhotoBrowser_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YDPhotoBrowser_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		747B22797F20A77EAF455F7D362CE2A2 /* Pods-YDPhotoBrowser_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YDPhotoBrowser_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		95D50CB74FD253DBB81D080E55E29500 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		9650CB68E8AE4F57894E1DF78783FFCD /* YDPhotoBrowser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YDPhotoBrowser-dummy.m"; sourceTree = "<group>"; };
+		997919AB8F610982F344479C121B5989 /* Pods-YDPhotoBrowser_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YDPhotoBrowser_Example.release.xcconfig"; sourceTree = "<group>"; };
+		A9C51C771DD839E624CF474ECE4F1946 /* Pods-YDPhotoBrowser_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YDPhotoBrowser_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		AB9D9E37497508EC5B8652F42F723095 /* YDPhotoBrowser-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YDPhotoBrowser-prefix.pch"; sourceTree = "<group>"; };
+		AF6D11CA1625FF670160383BE16061F5 /* YDPhotoBrowser.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = YDPhotoBrowser.modulemap; sourceTree = "<group>"; };
+		B919F99DC9B2DAE69925DEB18FC11092 /* Pods-YDPhotoBrowser_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YDPhotoBrowser_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C7B18B8ED04C66571EB2BD467885198F /* Pods-YDPhotoBrowser_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-YDPhotoBrowser_Example-dummy.m"; sourceTree = "<group>"; };
+		C831151DDDE4B62CC8E5EA2A3D3E450A /* YDPhotoBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YDPhotoBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC0CDA5D19C3A8DA481FA83880011DBC /* Pods-YDPhotoBrowser_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-YDPhotoBrowser_Tests-umbrella.h"; sourceTree = "<group>"; };
+		DB5E761C0C2A0D9CA9C66A73BE322C49 /* Pods-YDPhotoBrowser_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YDPhotoBrowser_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EC78E92FA47034F92C24DAFDE75D72A6 /* YDPhotoBrowser.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = YDPhotoBrowser.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EFF365577B5DE85FC2326942DA7F24D4 /* Pods-YDPhotoBrowser_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-YDPhotoBrowser_Tests-dummy.m"; sourceTree = "<group>"; };
+		F662362B4A33D907B0C227889A23B18C /* Pods-YDPhotoBrowser_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-YDPhotoBrowser_Example.modulemap"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9F89EE3DEA44729BED14CB091FC65231 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DD50F585F054A9703EE494DF907CBF5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7C4308F5F330DF204783AA5CCD28095 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4002F2B5717321C6A35A6784D1D32646 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4F6695BF4AC519FC054233250E405CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2025687E909B7553692B099540A1769D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01B118E9B8B72EDD546FFAA58D3A5296 /* Pods-YDPhotoBrowser_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1A13BD68D0B3C99915AAEDC5D0CE0955 /* Info.plist */,
+				5C46D27BA85A75AA02BDF710748B27ED /* Pods-YDPhotoBrowser_Tests.modulemap */,
+				DB5E761C0C2A0D9CA9C66A73BE322C49 /* Pods-YDPhotoBrowser_Tests-acknowledgements.markdown */,
+				2D7DCAF91F3842D6B18A2539C61AF3C2 /* Pods-YDPhotoBrowser_Tests-acknowledgements.plist */,
+				EFF365577B5DE85FC2326942DA7F24D4 /* Pods-YDPhotoBrowser_Tests-dummy.m */,
+				747B22797F20A77EAF455F7D362CE2A2 /* Pods-YDPhotoBrowser_Tests-frameworks.sh */,
+				2725B9996F39B746A0DA45372476909F /* Pods-YDPhotoBrowser_Tests-resources.sh */,
+				CC0CDA5D19C3A8DA481FA83880011DBC /* Pods-YDPhotoBrowser_Tests-umbrella.h */,
+				145E01140C19232A72CAE24F2ECE1A3E /* Pods-YDPhotoBrowser_Tests.debug.xcconfig */,
+				0BB39171EA2157F68CDB673579F000C6 /* Pods-YDPhotoBrowser_Tests.release.xcconfig */,
+			);
+			name = "Pods-YDPhotoBrowser_Tests";
+			path = "Target Support Files/Pods-YDPhotoBrowser_Tests";
+			sourceTree = "<group>";
+		};
+		05A12321BC60553D622098F3BD9BE61D /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				877DDF82AA2F6407B49570EF32475284 /* YDPhotoBrowser */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		1DFAC6793186ACE933188935E130CC17 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2D0EB75D65CE4B7926F44D1211CA4B62 /* Pods-YDPhotoBrowser_Example */,
+				01B118E9B8B72EDD546FFAA58D3A5296 /* Pods-YDPhotoBrowser_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		2D0EB75D65CE4B7926F44D1211CA4B62 /* Pods-YDPhotoBrowser_Example */ = {
+			isa = PBXGroup;
+			children = (
+				02B5B650E0683B383C8D6F276B26C2A9 /* Info.plist */,
+				F662362B4A33D907B0C227889A23B18C /* Pods-YDPhotoBrowser_Example.modulemap */,
+				B919F99DC9B2DAE69925DEB18FC11092 /* Pods-YDPhotoBrowser_Example-acknowledgements.markdown */,
+				A9C51C771DD839E624CF474ECE4F1946 /* Pods-YDPhotoBrowser_Example-acknowledgements.plist */,
+				C7B18B8ED04C66571EB2BD467885198F /* Pods-YDPhotoBrowser_Example-dummy.m */,
+				5E0ACA261C6F521D3597C23FDFC3AA88 /* Pods-YDPhotoBrowser_Example-frameworks.sh */,
+				2FADDDEC7BB507FC7EA86FB5F19DA718 /* Pods-YDPhotoBrowser_Example-resources.sh */,
+				323A24DEA8720C679B92CA70AE171CFA /* Pods-YDPhotoBrowser_Example-umbrella.h */,
+				660F472AD880AA620B2428B5F3767233 /* Pods-YDPhotoBrowser_Example.debug.xcconfig */,
+				997919AB8F610982F344479C121B5989 /* Pods-YDPhotoBrowser_Example.release.xcconfig */,
+			);
+			name = "Pods-YDPhotoBrowser_Example";
+			path = "Target Support Files/Pods-YDPhotoBrowser_Example";
+			sourceTree = "<group>";
+		};
+		333F46FF6E0980184CEAAB6BBCC02A08 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				36E8C737DD844AD98282CE9E076B15D0 /* Pods_YDPhotoBrowser_Example.framework */,
+				4D777B11DA66DCB6D45BD6228B4D4844 /* Pods_YDPhotoBrowser_Tests.framework */,
+				C831151DDDE4B62CC8E5EA2A3D3E450A /* YDPhotoBrowser.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		565947BEE1B65BE97F5772B86D83AEA8 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				50CD894AE3A2F789FE96C41FDCAD8328 /* Info.plist */,
+				AF6D11CA1625FF670160383BE16061F5 /* YDPhotoBrowser.modulemap */,
+				008A3783E73F91D9340AF361D5FFE049 /* YDPhotoBrowser.xcconfig */,
+				9650CB68E8AE4F57894E1DF78783FFCD /* YDPhotoBrowser-dummy.m */,
+				AB9D9E37497508EC5B8652F42F723095 /* YDPhotoBrowser-prefix.pch */,
+				0EBA009FAE0BB7C02350B25EC21B2C94 /* YDPhotoBrowser-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/YDPhotoBrowser";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				05A12321BC60553D622098F3BD9BE61D /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				333F46FF6E0980184CEAAB6BBCC02A08 /* Products */,
+				1DFAC6793186ACE933188935E130CC17 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		877DDF82AA2F6407B49570EF32475284 /* YDPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				17998CDD20E9F66F007EC781 /* YDPhotoBrowser.h */,
+				17998CDE20E9F66F007EC781 /* YDPhotoBrowser.m */,
+				17998CDC20E9F66F007EC781 /* YDPhotoScrollView.h */,
+				17998CDF20E9F66F007EC781 /* YDPhotoScrollView.m */,
+				F2310EEEB5546639A2154ADBDACA21B0 /* Pod */,
+				565947BEE1B65BE97F5772B86D83AEA8 /* Support Files */,
+			);
+			name = YDPhotoBrowser;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		F2310EEEB5546639A2154ADBDACA21B0 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				95D50CB74FD253DBB81D080E55E29500 /* LICENSE */,
+				35EF0023AE561C6C6B79BABEBCF05975 /* README.md */,
+				EC78E92FA47034F92C24DAFDE75D72A6 /* YDPhotoBrowser.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2233C405666E0FEEA189D5DA874E4CED /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17998CE120E9F66F007EC781 /* YDPhotoBrowser.h in Headers */,
+				17998CE020E9F66F007EC781 /* YDPhotoScrollView.h in Headers */,
+				3525243C0FDE4E47F981358C1C759637 /* Pods-YDPhotoBrowser_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F012A1551CA7D15CA7D945A7F49B18A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9A2A2D0B471174128FF10D431B3F85D /* Pods-YDPhotoBrowser_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B20CDF67FEAAF51CA9F488495EC71AEB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9175CCBE7E03BA50D4161458AF55102 /* YDPhotoBrowser-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0B979A31EBCDE597016055B5851C29FD /* Pods-YDPhotoBrowser_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 456863B6E9AA39A4340320BAB06C4628 /* Build configuration list for PBXNativeTarget "Pods-YDPhotoBrowser_Tests" */;
+			buildPhases = (
+				EF6368C76F71C7F5046EBA72CE0EB733 /* Sources */,
+				F4F6695BF4AC519FC054233250E405CA /* Frameworks */,
+				8F012A1551CA7D15CA7D945A7F49B18A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-YDPhotoBrowser_Tests";
+			productName = "Pods-YDPhotoBrowser_Tests";
+			productReference = 4D777B11DA66DCB6D45BD6228B4D4844 /* Pods_YDPhotoBrowser_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2D5D0AF5F885B30296C589DE4ACA20E0 /* Pods-YDPhotoBrowser_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C484FF583AA9AACC4C3623CAD5FAD3A /* Build configuration list for PBXNativeTarget "Pods-YDPhotoBrowser_Example" */;
+			buildPhases = (
+				575F60B499167460F89895E09B799A5C /* Sources */,
+				9F89EE3DEA44729BED14CB091FC65231 /* Frameworks */,
+				2233C405666E0FEEA189D5DA874E4CED /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFE2249C4F7EF5E613F0E28AF54FC974 /* PBXTargetDependency */,
+			);
+			name = "Pods-YDPhotoBrowser_Example";
+			productName = "Pods-YDPhotoBrowser_Example";
+			productReference = 36E8C737DD844AD98282CE9E076B15D0 /* Pods_YDPhotoBrowser_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B32A9D8B7794B819814DDCF8E7DAD854 /* YDPhotoBrowser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3F78ED1A68738352959C0FEE4BA67F5 /* Build configuration list for PBXNativeTarget "YDPhotoBrowser" */;
+			buildPhases = (
+				9E13531D4BA3DC390CAFF23E7D9910A7 /* Sources */,
+				B7C4308F5F330DF204783AA5CCD28095 /* Frameworks */,
+				B20CDF67FEAAF51CA9F488495EC71AEB /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YDPhotoBrowser;
+			productName = YDPhotoBrowser;
+			productReference = C831151DDDE4B62CC8E5EA2A3D3E450A /* YDPhotoBrowser.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 333F46FF6E0980184CEAAB6BBCC02A08 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2D5D0AF5F885B30296C589DE4ACA20E0 /* Pods-YDPhotoBrowser_Example */,
+				0B979A31EBCDE597016055B5851C29FD /* Pods-YDPhotoBrowser_Tests */,
+				B32A9D8B7794B819814DDCF8E7DAD854 /* YDPhotoBrowser */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		575F60B499167460F89895E09B799A5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17998CE320E9F66F007EC781 /* YDPhotoScrollView.m in Sources */,
+				17998CE220E9F66F007EC781 /* YDPhotoBrowser.m in Sources */,
+				0989BCD4224E00050D72F957BA47AFBF /* Pods-YDPhotoBrowser_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E13531D4BA3DC390CAFF23E7D9910A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D352C30B8EE032497B8356D9E431A15F /* YDPhotoBrowser-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF6368C76F71C7F5046EBA72CE0EB733 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A21CC339098AB8F47E8C79FF305DE350 /* Pods-YDPhotoBrowser_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BFE2249C4F7EF5E613F0E28AF54FC974 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = YDPhotoBrowser;
+			target = B32A9D8B7794B819814DDCF8E7DAD854 /* YDPhotoBrowser */;
+			targetProxy = 4750072B761979C2A706779B0A555268 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		11C141F68D2B51E9CD857AC971B42C4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 997919AB8F610982F344479C121B5989 /* Pods-YDPhotoBrowser_Example.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-YDPhotoBrowser_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-YDPhotoBrowser_Example/Pods-YDPhotoBrowser_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_YDPhotoBrowser_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		2B1A9C041C2329E01FF4FEF9078C605F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BB39171EA2157F68CDB673579F000C6 /* Pods-YDPhotoBrowser_Tests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-YDPhotoBrowser_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-YDPhotoBrowser_Tests/Pods-YDPhotoBrowser_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_YDPhotoBrowser_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3DE41780BB5F706C2F477696E3F652CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 145E01140C19232A72CAE24F2ECE1A3E /* Pods-YDPhotoBrowser_Tests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-YDPhotoBrowser_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-YDPhotoBrowser_Tests/Pods-YDPhotoBrowser_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_YDPhotoBrowser_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5011B865762FC0C0A28ECEC4CB63DC68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		827269710C98D60C14D46BC6AF9BF728 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		B1DAD30803DD9433B9D856701E6A8E0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 008A3783E73F91D9340AF361D5FFE049 /* YDPhotoBrowser.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/YDPhotoBrowser/YDPhotoBrowser-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/YDPhotoBrowser/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/YDPhotoBrowser/YDPhotoBrowser.modulemap";
+				PRODUCT_NAME = YDPhotoBrowser;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E2052B84979BD82FF37E32163438796C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 008A3783E73F91D9340AF361D5FFE049 /* YDPhotoBrowser.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/YDPhotoBrowser/YDPhotoBrowser-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/YDPhotoBrowser/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/YDPhotoBrowser/YDPhotoBrowser.modulemap";
+				PRODUCT_NAME = YDPhotoBrowser;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E929ECA5EFF1485FE8889FF9EDF47CBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 660F472AD880AA620B2428B5F3767233 /* Pods-YDPhotoBrowser_Example.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-YDPhotoBrowser_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-YDPhotoBrowser_Example/Pods-YDPhotoBrowser_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_YDPhotoBrowser_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5011B865762FC0C0A28ECEC4CB63DC68 /* Debug */,
+				827269710C98D60C14D46BC6AF9BF728 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		456863B6E9AA39A4340320BAB06C4628 /* Build configuration list for PBXNativeTarget "Pods-YDPhotoBrowser_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DE41780BB5F706C2F477696E3F652CF /* Debug */,
+				2B1A9C041C2329E01FF4FEF9078C605F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6C484FF583AA9AACC4C3623CAD5FAD3A /* Build configuration list for PBXNativeTarget "Pods-YDPhotoBrowser_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E929ECA5EFF1485FE8889FF9EDF47CBA /* Debug */,
+				11C141F68D2B51E9CD857AC971B42C4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3F78ED1A68738352959C0FEE4BA67F5 /* Build configuration list for PBXNativeTarget "YDPhotoBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2052B84979BD82FF37E32163438796C /* Debug */,
+				B1DAD30803DD9433B9D856701E6A8E0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

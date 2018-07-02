@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YDPhotoBrowser'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of YDPhotoBrowser.'
+  s.version          = '1.0.0'
+  s.summary          = 'A easy to use frameworks for browsering image,include rotatation,zoom etc.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,14 +18,14 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+    A easy to use frameworks for browsering image,include rotatation,zoom etc..
                        DESC
 
-  s.homepage         = 'https://github.com/jfdream1992@126.com/YDPhotoBrowser'
+  s.homepage         = 'https://github.com/jfdream/YDPhotoBrowser'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'jfdream1992@126.com' => 'yangyudong@rongcloud.cn' }
-  s.source           = { :git => 'https://github.com/jfdream1992@126.com/YDPhotoBrowser.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/jfdream/YDPhotoBrowser.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
@@ -38,5 +38,7 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+   s.dependency 'SDWebImage', '~> 4.4.1'
+   s.dependency 'Masonry', '~> 1.1.0'
+   s.dependency 'SVProgressHUD', '~> 2.2.5'
 end

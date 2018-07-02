@@ -1,0 +1,22 @@
+{
+  "name": "YDPhotoBrowser",
+  "version": "0.1.0",
+  "summary": "A short description of YDPhotoBrowser.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/jfdream1992@126.com/YDPhotoBrowser",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "jfdream1992@126.com": "yangyudong@rongcloud.cn"
+  },
+  "source": {
+    "git": "https://github.com/jfdream1992@126.com/YDPhotoBrowser.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "YDPhotoBrowser/Classes/**/*"
+}

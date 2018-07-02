@@ -59,13 +59,13 @@
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		775D44578F54F96E51D07493 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		775D44578F54F96E51D07493 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		7ABF43091AE6DA66F257E189 /* Pods-YDPhotoBrowser_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDPhotoBrowser_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-YDPhotoBrowser_Example/Pods-YDPhotoBrowser_Example.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F2B5E0DE84292149B661921 /* Pods-YDPhotoBrowser_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDPhotoBrowser_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YDPhotoBrowser_Tests/Pods-YDPhotoBrowser_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		D8C5D067468E261E14C5A26A /* YDPhotoBrowser.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = YDPhotoBrowser.podspec; path = ../YDPhotoBrowser.podspec; sourceTree = "<group>"; };
+		D8C5D067468E261E14C5A26A /* YDPhotoBrowser.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = YDPhotoBrowser.podspec; path = ../YDPhotoBrowser.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EB1A9D2551FBF381C498DB15 /* Pods_YDPhotoBrowser_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YDPhotoBrowser_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECC011DD29EF4678117C27AF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		ECC011DD29EF4678117C27AF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F4F221FEE0AEC8B7DF30006F /* Pods-YDPhotoBrowser_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDPhotoBrowser_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YDPhotoBrowser_Tests/Pods-YDPhotoBrowser_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
