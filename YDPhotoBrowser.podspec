@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YDPhotoBrowser'
-  s.version          = '1.0'
+  s.version          = '1.0.1'
   s.summary          = 'A easy to use frameworks for browsering image,include rotation,zoom in and zoom out etc.'
 
 # This description is used to generate tags and improve search results.
