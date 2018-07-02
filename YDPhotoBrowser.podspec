@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'YDPhotoBrowser'
   s.version          = '1.0'
-  s.summary          = 'A easy to use frameworks for browsering image,include rotatation,zoom etc.'
+  s.summary          = 'A easy to use frameworks for browsering image,include rotation,zoom in and zoom out etc.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-    A easy to use frameworks for browsering image,include rotatation,zoom etc..
+    A easy to use frameworks for browsering image,rotation,zoom in and zoom out,custom dismiss annimation.
                        DESC
 
   s.homepage         = 'https://github.com/jfdream/YDPhotoBrowser'
