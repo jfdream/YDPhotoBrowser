@@ -117,6 +117,29 @@
         _topImageView.hidden = NO;
         self.hidden = YES;
         CGRect frame = [hiddenImageView.superview convertRect:hiddenImageView.frame toView:[UIApplication sharedApplication].delegate.window];
+        if ([self.delegate respondsToSelector:@selector(photoBrowser:hideToIndexFromCell:)]) {
+            NSIndexPath * indexPath = [self.delegate photoBrowser:self hideToIndexFromCell:_currentIndex];
+            id cell = hiddenImageView.superview;
+            UITableViewCell * tableViewCell;
+            if ([cell isKindOfClass:[UITableViewCell class]]) {
+                // imageView In cell
+                tableViewCell = (UITableViewCell *)cell;
+            }
+            else if ([hiddenImageView.superview.superview isKindOfClass:[UITableViewCell class]]){
+                // imageView In contentView;
+                tableViewCell = (UITableViewCell *)hiddenImageView.superview.superview;
+            }
+            if (tableViewCell) {
+                UITableView * tableView = (UITableView *)tableViewCell.superview;
+                // cell in window rect
+                CGRect rect = [tableView rectForRowAtIndexPath:indexPath];
+                CGPoint origin = CGPointMake(rect.origin.x + hiddenImageView.frame.origin.x, rect.origin.y + hiddenImageView.frame.origin.y);
+                CGSize size = hiddenImageView.frame.size;
+                frame.size = size;
+                frame.origin = origin;
+            }
+
+        }
         [UIView animateWithDuration:0.3 animations:^{
             self->_topImageView.frame = frame;
             self->_topView.alpha = 0.f;
@@ -287,13 +310,37 @@
     }
     
     if([self.delegate respondsToSelector:@selector(photoBrowser:showFromIndex:)]){
-        UIImageView * fromImageView = [self.delegate photoBrowser:self showFromIndex:_currentIndex];
         UIWindow * topWindow = [UIApplication sharedApplication].delegate.window;
+        UIImageView * fromImageView = [self.delegate photoBrowser:self showFromIndex:_currentIndex];
+        CGRect frame = [fromImageView.superview convertRect:fromImageView.frame toView:topWindow];
+        
+        if ([self.delegate respondsToSelector:@selector(photoBrowser:showFromIndexFromCell:)]) {
+            NSIndexPath * indexPath = [self.delegate photoBrowser:self showFromIndexFromCell:_currentIndex];
+            id cell = fromImageView.superview;
+            UITableViewCell * tableViewCell;
+            if ([cell isKindOfClass:[UITableViewCell class]]) {
+                // imageView In cell
+                tableViewCell = (UITableViewCell *)cell;
+            }
+            else if ([fromImageView.superview.superview isKindOfClass:[UITableViewCell class]]){
+                // imageView In contentView;
+                tableViewCell = (UITableViewCell *)fromImageView.superview.superview;
+            }
+            if (tableViewCell) {
+                UITableView * tableView = (UITableView *)tableViewCell.superview;
+                // cell in window rect
+                CGRect rect = [tableView rectForRowAtIndexPath:indexPath];
+                CGPoint origin = CGPointMake(rect.origin.x + fromImageView.frame.origin.x, rect.origin.y + fromImageView.frame.origin.y);
+                CGSize size = fromImageView.frame.size;
+                frame.size = size;
+                frame.origin = origin;
+            }
+        }
+        
         _topView = [[UIView alloc]initWithFrame:topWindow.bounds];
         _topView.backgroundColor = [UIColor blackColor];
         [topWindow addSubview:_topView];
         
-        CGRect frame = [fromImageView.superview convertRect:fromImageView.frame toView:topWindow];
         _topImageView = [[UIImageView alloc] initWithFrame:frame];
         _topImageView.image = fromImageView.image;
         _topImageView.contentMode = UIViewContentModeScaleAspectFit;

@@ -17,6 +17,24 @@
 @optional
 - (UIImageView *)photoBrowser:(YDPhotoBrowser *)photoBrowser showFromIndex:(NSInteger)fromIndex;
 - (UIImageView *)photoBrowser:(YDPhotoBrowser *)photoBrowser hideToIndex:(NSInteger)toIndex;
+
+/**
+ 如果从 cell 点击图片的话需要实现下面方法，否则默认从普通视图展示
+
+ @param photoBrowser 本类实例
+ @param fromIndex 从第几张照片开始显示
+ @return 返回当前 cell 所处的 index Path
+ */
+- (NSIndexPath *)photoBrowser:(YDPhotoBrowser *)photoBrowser showFromIndexFromCell:(NSInteger)fromIndex;
+
+/**
+ 如果需要消失到对应的 cell 中需要实现下面代理方法
+
+ @param photoBrowser 本类实例
+ @param toIndex 从第几张照片消失
+ @return 返回消失的 cell 所处的 indexPath
+ */
+- (NSIndexPath *)photoBrowser:(YDPhotoBrowser *)photoBrowser hideToIndexFromCell:(NSInteger)toIndex;
 - (void)photoBrowser:(YDPhotoBrowser *)photoBrowser longPressImage:(UIImage *)pressImage;
 @end
 

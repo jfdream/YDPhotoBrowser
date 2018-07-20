@@ -1,9 +1,9 @@
 {
   "name": "YDPhotoBrowser",
-  "version": "0.1.0",
-  "summary": "A short description of YDPhotoBrowser.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/jfdream1992@126.com/YDPhotoBrowser",
+  "version": "1.0.2",
+  "summary": "A easy to use frameworks for browsering image,include rotation,zoom in and zoom out etc.",
+  "description": "A easy to use frameworks for browsering image,rotation,zoom in and zoom out,custom dismiss annimation.",
+  "homepage": "https://github.com/jfdream/YDPhotoBrowser",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,11 +12,22 @@
     "jfdream1992@126.com": "yangyudong@rongcloud.cn"
   },
   "source": {
-    "git": "https://github.com/jfdream1992@126.com/YDPhotoBrowser.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/jfdream/YDPhotoBrowser.git",
+    "tag": "1.0.2"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "YDPhotoBrowser/Classes/**/*"
+  "source_files": "YDPhotoBrowser/Classes/**/*",
+  "dependencies": {
+    "SDWebImage": [
+
+    ],
+    "Masonry": [
+
+    ],
+    "SVProgressHUD": [
+
+    ]
+  }
 }

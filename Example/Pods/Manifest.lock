@@ -1,7 +1,18 @@
 PODS:
-  - YDPhotoBrowser (0.1.0)
+  - Masonry (1.1.0)
+  - SDWebImage (4.4.1):
+    - SDWebImage/Core (= 4.4.1)
+  - SDWebImage/Core (4.4.1)
+  - SVProgressHUD (2.2.5)
+  - YDPhotoBrowser (1.0.2):
+    - Masonry
+    - SDWebImage
+    - SVProgressHUD
 
 DEPENDENCIES:
+  - Masonry
+  - SDWebImage
+  - SVProgressHUD
   - YDPhotoBrowser (from `../`)
 
 EXTERNAL SOURCES:
@@ -9,8 +20,11 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  YDPhotoBrowser: 1323f60f68cabb0e12e52115021fe9bd818d0a6f
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  YDPhotoBrowser: 2a63c5ff2fa22c92d4c4b4e297b16d6a8c8e3660
 
-PODFILE CHECKSUM: 30362b5fc35c8ff8518ff8614c8d29f4888c9163
+PODFILE CHECKSUM: dcd12f3814c21c9d3bb9453df9f06f2c01ec4212
 
 COCOAPODS: 1.4.0

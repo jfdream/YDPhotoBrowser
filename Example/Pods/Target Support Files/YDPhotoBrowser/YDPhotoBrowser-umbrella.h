@@ -10,6 +10,8 @@
 #endif
 #endif
 
+#import "YDPhotoBrowser.h"
+#import "YDPhotoScrollView.h"
 
 FOUNDATION_EXPORT double YDPhotoBrowserVersionNumber;
 FOUNDATION_EXPORT const unsigned char YDPhotoBrowserVersionString[];

@@ -2,6 +2,9 @@ use_frameworks!
 
 target 'YDPhotoBrowser_Example' do
   pod 'YDPhotoBrowser', :path => '../'
+  pod 'SDWebImage'
+  pod 'Masonry'
+  pod 'SVProgressHUD'
 
   target 'YDPhotoBrowser_Tests' do
     inherit! :search_paths
