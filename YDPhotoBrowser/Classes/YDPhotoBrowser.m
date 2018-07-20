@@ -10,6 +10,15 @@
 #import "Masonry.h"
 #define MAX_SHOW_NUMBER          5
 
+@implementation UIDevice(JFDREAM)
++ (BOOL)isX {
+    if ([UIScreen mainScreen].bounds.size.height == 812) {
+        return YES;
+    }
+    return NO;
+}
+@end
+
 @interface YDPhotoBrowser()<UIScrollViewDelegate,YDPhotoScrollViewDelegate>
 @property (nonatomic,strong)UIScrollView * pagingScrollView;
 @end
@@ -137,6 +146,8 @@
                 CGSize size = hiddenImageView.frame.size;
                 frame.size = size;
                 frame.origin = origin;
+                CGFloat originX = [UIDevice isX]?88:64;
+                frame.origin.y += originX;
             }
 
         }
@@ -334,6 +345,8 @@
                 CGSize size = fromImageView.frame.size;
                 frame.size = size;
                 frame.origin = origin;
+                CGFloat originX = [UIDevice isX] ? 88 : 64;
+                frame.origin.y += originX;
             }
         }
         
