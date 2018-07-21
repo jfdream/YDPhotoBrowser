@@ -8,8 +8,9 @@
 
 #import "YDPhotoBrowser.h"
 #import "Masonry.h"
+#import "YDPhotoBrowserPresentationController.h"
 #define MAX_SHOW_NUMBER          5
-
+#define MAX_DURATION             0.3
 @implementation UIDevice(JFDREAM)
 + (BOOL)isX {
     if ([UIScreen mainScreen].bounds.size.height == 812) {
@@ -38,41 +39,57 @@
     
     UIPageControl * pageControl;
     UIImageView * _topImageView;
-    UIView * _topView;
+
     UIActivityIndicatorView * _indicatorView;
     BOOL isPaning;
+    UIViewController * _parentViewController;
+    CGRect _frameOfPresentedViewInContainerView;
+    CGRect _frameOfPresentedViewInContainerViewOrigin;
+    BOOL _isEnlarge;
+    BOOL _isEnlargeFinish;
     
 }
--(id)initWithFrame:(CGRect)frame{
-    self = [super initWithFrame:frame];
+-(id)init{
+    self = [super init];
     if (self) {
-        self.backgroundColor = [UIColor blackColor];
+        self.view.backgroundColor = [UIColor blackColor];
         _recyclePhotos = [NSMutableArray new];
         _pagingScrollView = [[UIScrollView alloc] init];_pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _pagingScrollView.pagingEnabled = YES;
         _pagingScrollView.delegate = self;
+        _pagingScrollView.hidden = YES;
         _pagingScrollView.showsHorizontalScrollIndicator = NO;
         _pagingScrollView.showsVerticalScrollIndicator = NO;
         _pagingScrollView.backgroundColor = [UIColor clearColor];
-        [self addSubview:_pagingScrollView];
-        
+        [self.view addSubview:_pagingScrollView];
+
         [_pagingScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(@(-PADDING));
-            make.right.equalTo(self).offset(PADDING);
-            make.height.equalTo(self);
-            make.top.equalTo(self);
+            make.right.equalTo(self.view).offset(PADDING);
+            make.height.equalTo(self.view);
+            make.top.equalTo(self.view);
         }];
-        
+
         pageControl = [[UIPageControl alloc]init];
-        [self addSubview:pageControl];
+        [self.view addSubview:pageControl];
         [pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(self).offset(-15);
-            make.centerX.mas_equalTo(self);
-            make.width.equalTo(self);
+            make.bottom.mas_equalTo(self.view).offset(-15);
+            make.centerX.mas_equalTo(self.view);
+            make.width.equalTo(self.view);
             make.height.mas_equalTo(20);
         }];
+        _topImageView = [[UIImageView alloc]init];
+        _topImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.view addSubview:_topImageView];
     }
     return self;
+}
+-(void)hiddenMainElement:(BOOL)hidden{
+    pageControl.hidden = hidden;
+    _pagingScrollView.hidden = hidden;
+}
+-(void)view:(UIView *)view doubleTapDetected:(UITapGestureRecognizer *)touch{
+    
 }
 - (void)view:(UIView *)view singleTapDetected:(UITouch *)touch{
     if (isPaning) {
@@ -80,13 +97,12 @@
         return;
     }
     if (self.enableCustomDismiss) {
-        [_topView removeFromSuperview];
         NSMutableArray * subViews = [NSMutableArray new];
         NSMutableArray <NSValue *>* rects = [NSMutableArray new];
         for (NSInteger i=0; i<4; i++) {
-            CGFloat width = self.frame.size.width;
-            CGFloat height = self.frame.size.height;
-            UIView * aView = [self resizableSnapshotViewFromRect:CGRectMake(width/2*(i%2), height/2*(i/2), width/2, height/2) afterScreenUpdates:YES withCapInsets:UIEdgeInsetsZero];
+            CGFloat width = self.view.frame.size.width;
+            CGFloat height = self.view.frame.size.height;
+            UIView * aView = [self.view resizableSnapshotViewFromRect:CGRectMake(width/2*(i%2), height/2*(i/2), width/2, height/2) afterScreenUpdates:YES withCapInsets:UIEdgeInsetsZero];
             aView.frame = CGRectMake(width/2*(i%2), height/2*(i/2), width/2, height/2);
             if (i==0) {
                 CGRect frame = CGRectMake(-width/2, -height/2, width/2, height/2);
@@ -110,8 +126,9 @@
             }
             [[UIApplication sharedApplication].delegate.window addSubview:aView];
         }
-        self.hidden = YES;
-        [UIView animateWithDuration:0.5 animations:^{
+        self.view.hidden = YES;
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [UIView animateWithDuration:MAX_DURATION animations:^{
             for (NSInteger i=0; i<4; i++) {
                 UIView * aView = subViews[i];
                 aView.frame = [rects[i] CGRectValue];
@@ -121,11 +138,12 @@
     }
     if ([self.delegate respondsToSelector:@selector(photoBrowser:hideToIndex:)]) {
         UIImageView * hiddenImageView = [self.delegate photoBrowser:self hideToIndex:_currentIndex];
+        [_topImageView removeFromSuperview];
+        [self.view.window addSubview:_topImageView];
         _topImageView.image = hiddenImageView.image;
-        _topView.hidden = NO;
         _topImageView.hidden = NO;
-        self.hidden = YES;
-        CGRect frame = [hiddenImageView.superview convertRect:hiddenImageView.frame toView:[UIApplication sharedApplication].delegate.window];
+        [self hiddenMainElement:YES];
+        CGRect frame = [hiddenImageView.superview convertRect:hiddenImageView.frame toView:self.view];
         if ([self.delegate respondsToSelector:@selector(photoBrowser:hideToIndexFromCell:)]) {
             NSIndexPath * indexPath = [self.delegate photoBrowser:self hideToIndexFromCell:_currentIndex];
             id cell = hiddenImageView.superview;
@@ -149,41 +167,42 @@
                 CGFloat originX = [UIDevice isX]?88:64;
                 frame.origin.y += originX;
             }
-
         }
-        [UIView animateWithDuration:0.3 animations:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [UIView animateWithDuration:MAX_DURATION animations:^{
             self->_topImageView.frame = frame;
-            self->_topView.alpha = 0.f;
         } completion:^(BOOL finished) {
-            [self->_topView removeFromSuperview];
             [self->_topImageView removeFromSuperview];
         }];
+        
     }
     else{
-        self.hidden = YES;
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 -(void)setPanToDismiss:(BOOL)panToDismiss{
     _panToDismiss = panToDismiss;
     if (_panToDismiss) {
         UIPanGestureRecognizer * panGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGestureClick:)];
-        [self addGestureRecognizer:panGesture];
+        [self.view addGestureRecognizer:panGesture];
     }
 }
 -(void)panGestureClick:(UIPanGestureRecognizer *)gestureRecognizer{
     isPaning = YES;
     if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        self.hidden = YES;
+        [self hiddenMainElement:YES];
+        self.view.hidden = YES;
+        [_topImageView removeFromSuperview];
+        [self.view.window addSubview:_topImageView];
         for (YDPhotoScrollView * _scrollView in _pagingScrollView.subviews) {
             if (_scrollView.index == _currentIndex) {
                 _topImageView.image = _scrollView.image;
             }
         }
-        _topView.hidden = NO;
         _topImageView.hidden = NO;
-        _panGestureStartPoint = [gestureRecognizer locationInView:self];
+        _panGestureStartPoint = [gestureRecognizer locationInView:self.view];
     }else if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {
-        CGPoint currentPoint = [gestureRecognizer locationInView:self];
+        CGPoint currentPoint = [gestureRecognizer locationInView:self.view];
         CGFloat offsetY = currentPoint.y - _panGestureStartPoint.y;
         CGFloat offsetX = currentPoint.x - _panGestureStartPoint.x;
         CGPoint centerPoint = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
@@ -195,40 +214,39 @@
             imageSize.width -= offsetY * ([UIScreen mainScreen].bounds.size.width / [UIScreen mainScreen].bounds.size.height);
         }
         CGRect frame = CGRectMake(centerPoint.x - imageSize.width/2, centerPoint.y - imageSize.height/2, imageSize.width, imageSize.height);
+        YDPhotoBrowserPresentationController * _presentationController = (YDPhotoBrowserPresentationController *)self.presentationController;
         [UIView animateWithDuration:0.1 animations:^{
             self->_topImageView.frame = frame;
             if (offsetY<=0) {
-                self->_topView.alpha = 1.f;
+                _presentationController.dimmingView.alpha = 1.f;
             }
             else{
                 CGFloat alpha = (1 - offsetY/180.f);
                 if (alpha<0) {
                     alpha = 0.f;
                 }
-                self->_topView.alpha = alpha;
+                _presentationController.dimmingView.alpha = alpha;
             }
         }];
     }
     else if (gestureRecognizer.state == UIGestureRecognizerStateEnded){
-        CGPoint currentPoint = [gestureRecognizer locationInView:self];
+        CGPoint currentPoint = [gestureRecognizer locationInView:self.view];
         CGFloat offsetY = currentPoint.y - _panGestureStartPoint.y;
         if (offsetY > 180) {
-            [self removeFromSuperview];
+            [self dismissViewControllerAnimated:YES completion:nil];
             [UIView animateWithDuration:0.3 animations:^{
                 self->_topImageView.alpha = 0.f;
             } completion:^(BOOL finished) {
-                [self->_topView removeFromSuperview];
                 [self->_topImageView removeFromSuperview];
             }];
         }
         else{
             [UIView animateWithDuration:0.3 animations:^{
-                self->_topView.alpha = 1.f;
                 self->_topImageView.frame = [UIScreen mainScreen].bounds;
             } completion:^(BOOL finished) {
-                self.hidden = NO;
-                self->_topView.hidden = YES;
+                self.view.hidden = NO;
                 self->_topImageView.hidden = YES;
+                [self hiddenMainElement:NO];
             }];
         }
     }
@@ -294,9 +312,12 @@
     }
 }
 -(void)reloadData{
-    if (!self.superview) {
-        @throw @"You Must Add This View To Supper";
+    if (![self.delegate respondsToSelector:@selector(photoBrowserParentViewController)]) {
+        @throw @"You must initialize parentViewController method!";
     }
+    _parentViewController = [self.delegate photoBrowserParentViewController];
+    [_parentViewController presentViewController:self animated:YES completion:nil];
+
     _totalPage = [self.delegate numberOfPagesInPhotoBrowser:self];
     _screenFrame = [UIScreen mainScreen].bounds;
     _pagingScrollView.contentSize = CGSizeMake((_screenFrame.size.width + 2*PADDING) * _totalPage, _screenFrame.size.height);
@@ -315,16 +336,16 @@
         _photoScrollView.photo = photo;
         _photoScrollView.index = i;
         _photoScrollView.tapDelegate = self;
-        
+
         [_pagingScrollView addSubview:_photoScrollView];
         [_recyclePhotos addObject:_photoScrollView];
     }
-    
+
     if([self.delegate respondsToSelector:@selector(photoBrowser:showFromIndex:)]){
         UIWindow * topWindow = [UIApplication sharedApplication].delegate.window;
         UIImageView * fromImageView = [self.delegate photoBrowser:self showFromIndex:_currentIndex];
         CGRect frame = [fromImageView.superview convertRect:fromImageView.frame toView:topWindow];
-        
+
         if ([self.delegate respondsToSelector:@selector(photoBrowser:showFromIndexFromCell:)]) {
             NSIndexPath * indexPath = [self.delegate photoBrowser:self showFromIndexFromCell:_currentIndex];
             id cell = fromImageView.superview;
@@ -349,40 +370,50 @@
                 frame.origin.y += originX;
             }
         }
-        
-        _topView = [[UIView alloc]initWithFrame:topWindow.bounds];
-        _topView.backgroundColor = [UIColor blackColor];
-        [topWindow addSubview:_topView];
-        
-        _topImageView = [[UIImageView alloc] initWithFrame:frame];
         _topImageView.image = fromImageView.image;
-        _topImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [topWindow addSubview:_topImageView];
-        
-        self.hidden = YES;
-        [UIView animateWithDuration:0.2 animations:^{
+        _topImageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+        _frameOfPresentedViewInContainerView = frame;
+        _frameOfPresentedViewInContainerViewOrigin = frame;
+        self.preferredContentSize = frame.size;
+    }
+}
+-(CGRect)frameOfPresentedViewInContainerView{
+    return _frameOfPresentedViewInContainerView;
+}
+-(void)enlargePrepare{
+    self.preferredContentSize = [UIScreen mainScreen].bounds.size;
+    _frameOfPresentedViewInContainerView = [UIScreen mainScreen].bounds;
+    _isEnlarge = YES;
+}
+-(void)enlargeToFullScreen{
+    if (_isEnlarge && !_isEnlargeFinish) {
+        _topImageView.frame = _frameOfPresentedViewInContainerViewOrigin;
+        [UIView animateWithDuration:0.3 animations:^{
             self->_topImageView.frame = [UIScreen mainScreen].bounds;
         } completion:^(BOOL finished) {
-            self->_topView.hidden = YES;
             self->_topImageView.hidden = YES;
-            self.hidden = NO;
+            self->_pagingScrollView.hidden = NO;
         }];
+        _isEnlargeFinish = YES;
     }
-    
-    [self mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.superview);
-        make.left.equalTo(self.superview);
-        make.width.equalTo(self.superview);
-        make.height.equalTo(self.superview);
-    }];
+}
+-(BOOL)isEnlarge{
+    return _isEnlarge;
+}
+-(void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
+    CGSize size = CGSizeMake([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
+    _frameOfPresentedViewInContainerView = CGRectMake(0, 0, 0, 0);
+    _frameOfPresentedViewInContainerView.size = size;
+    self.preferredContentSize = size;
 }
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     _isRotate = YES;
 }
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     _screenFrame = [UIScreen mainScreen].bounds;
+    self->_topImageView.frame = _screenFrame;
     _pagingScrollView.contentSize = CGSizeMake((_screenFrame.size.width + 2*PADDING) * _totalPage, _screenFrame.size.height);
-    
     NSArray <YDPhotoScrollView *> * subViews = _pagingScrollView.subviews;
     for (YDPhotoScrollView * _scrollView in subViews) {
         CGRect frame = [self frameForPageAtIndex:_scrollView.index];

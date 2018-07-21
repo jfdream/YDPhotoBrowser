@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "YDPhotoScrollView.h"
+#import "YDPhotoBrowserPresentationController.h"
 
 @class YDPhotoBrowser;
 @protocol YDPhotoBrowserDelegate <NSObject>
 - (YDPhoto *)photoBrowser:(YDPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index;
 - (NSInteger)numberOfPagesInPhotoBrowser:(YDPhotoBrowser *)photoBrowser;
-
+- (UIViewController *)photoBrowserParentViewController;
 @optional
 - (UIImageView *)photoBrowser:(YDPhotoBrowser *)photoBrowser showFromIndex:(NSInteger)fromIndex;
 - (UIImageView *)photoBrowser:(YDPhotoBrowser *)photoBrowser hideToIndex:(NSInteger)toIndex;
@@ -38,7 +39,7 @@
 - (void)photoBrowser:(YDPhotoBrowser *)photoBrowser longPressImage:(UIImage *)pressImage;
 @end
 
-@interface YDPhotoBrowser : UIView
+@interface YDPhotoBrowser : UIViewController
 @property (nonatomic,weak)id <YDPhotoBrowserDelegate> delegate;
 
 /**
@@ -61,14 +62,4 @@
  刷新界面，必须调该方法才能把界面显示出来
  */
 - (void)reloadData;
-
-/**
- 控制器选择时需要调用该方法
-
- @param toInterfaceOrientation 选择到的方向
- @param duration 时间
- */
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation;
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
 @end

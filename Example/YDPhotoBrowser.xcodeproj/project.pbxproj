@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1774B3A22101E0EF0020F16C /* hello.png in Resources */ = {isa = PBXBuildFile; fileRef = 1774B3A12101E0EF0020F16C /* hello.png */; };
+		17D74B902102DE2500CF8128 /* AAPLCustomPresentationSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B892102DE2500CF8128 /* AAPLCustomPresentationSecondViewController.m */; };
+		17D74B912102DE2500CF8128 /* AAPLCustomPresentationFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B8C2102DE2500CF8128 /* AAPLCustomPresentationFirstViewController.m */; };
+		17D74B922102DE2500CF8128 /* AAPLCustomPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B8D2102DE2500CF8128 /* AAPLCustomPresentationController.m */; };
+		17D74B932102DE2500CF8128 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B8F2102DE2500CF8128 /* DemoViewController.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -38,6 +43,15 @@
 
 /* Begin PBXFileReference section */
 		06D8EBF07F20B55F61E26186 /* Pods-YDPhotoBrowser_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDPhotoBrowser_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YDPhotoBrowser_Example/Pods-YDPhotoBrowser_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		1774B3A12101E0EF0020F16C /* hello.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hello.png; sourceTree = "<group>"; };
+		17D74B882102DE2400CF8128 /* AAPLCustomPresentationSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCustomPresentationSecondViewController.h; sourceTree = "<group>"; };
+		17D74B892102DE2500CF8128 /* AAPLCustomPresentationSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCustomPresentationSecondViewController.m; sourceTree = "<group>"; };
+		17D74B8A2102DE2500CF8128 /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		17D74B8B2102DE2500CF8128 /* AAPLCustomPresentationFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCustomPresentationFirstViewController.h; sourceTree = "<group>"; };
+		17D74B8C2102DE2500CF8128 /* AAPLCustomPresentationFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCustomPresentationFirstViewController.m; sourceTree = "<group>"; };
+		17D74B8D2102DE2500CF8128 /* AAPLCustomPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCustomPresentationController.m; sourceTree = "<group>"; };
+		17D74B8E2102DE2500CF8128 /* AAPLCustomPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCustomPresentationController.h; sourceTree = "<group>"; };
+		17D74B8F2102DE2500CF8128 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
 		33B2C982A7A036B106C2AFE7 /* Pods_YDPhotoBrowser_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YDPhotoBrowser_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* YDPhotoBrowser_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YDPhotoBrowser_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -137,6 +151,15 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* YDViewController.h */,
 				6003F5A6195388D20070C39A /* YDViewController.m */,
+				17D74B8E2102DE2500CF8128 /* AAPLCustomPresentationController.h */,
+				17D74B8D2102DE2500CF8128 /* AAPLCustomPresentationController.m */,
+				17D74B8B2102DE2500CF8128 /* AAPLCustomPresentationFirstViewController.h */,
+				17D74B8C2102DE2500CF8128 /* AAPLCustomPresentationFirstViewController.m */,
+				17D74B882102DE2400CF8128 /* AAPLCustomPresentationSecondViewController.h */,
+				17D74B892102DE2500CF8128 /* AAPLCustomPresentationSecondViewController.m */,
+				17D74B8A2102DE2500CF8128 /* DemoViewController.h */,
+				17D74B8F2102DE2500CF8128 /* DemoViewController.m */,
+				1774B3A12101E0EF0020F16C /* hello.png */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -250,6 +273,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "jfdream1992@126.com";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 9CVMN4UZK4;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -281,6 +307,7 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				1774B3A22101E0EF0020F16C /* hello.png in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -411,7 +438,11 @@
 			files = (
 				6003F59E195388D20070C39A /* YDAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* YDViewController.m in Sources */,
+				17D74B922102DE2500CF8128 /* AAPLCustomPresentationController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				17D74B912102DE2500CF8128 /* AAPLCustomPresentationFirstViewController.m in Sources */,
+				17D74B932102DE2500CF8128 /* DemoViewController.m in Sources */,
+				17D74B902102DE2500CF8128 /* AAPLCustomPresentationSecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +570,7 @@
 			baseConfigurationReference = 06D8EBF07F20B55F61E26186 /* Pods-YDPhotoBrowser_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YDPhotoBrowser/YDPhotoBrowser-Prefix.pch";
 				INFOPLIST_FILE = "YDPhotoBrowser/YDPhotoBrowser-Info.plist";
@@ -554,6 +586,7 @@
 			baseConfigurationReference = 7ABF43091AE6DA66F257E189 /* Pods-YDPhotoBrowser_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9CVMN4UZK4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YDPhotoBrowser/YDPhotoBrowser-Prefix.pch";
 				INFOPLIST_FILE = "YDPhotoBrowser/YDPhotoBrowser-Info.plist";
