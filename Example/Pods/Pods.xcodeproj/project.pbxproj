@@ -18,8 +18,8 @@
 		126BA64308DEB9054D1139AE70A77E00 /* SDWebImageCoderHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F3BF772A55ED3BF56FA1AB1B856C3D7 /* SDWebImageCoderHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		171C9FD50C65EEFAB4BB050CA29C7F6A /* NSButton+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A90C1A81A2BCEE4E601C0DED915B0BA4 /* NSButton+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		172A7E048AC999FC9169099849BA6495 /* SDAnimatedImageRep.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DDAB70E8AC5DF7ACE550378FA86C65 /* SDAnimatedImageRep.m */; };
-		1774B3A92101E40D0020F16C /* YDPhotoBrowserPresentationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1774B3A72101E40D0020F16C /* YDPhotoBrowserPresentationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1774B3AA2101E40D0020F16C /* YDPhotoBrowserPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1774B3A82101E40D0020F16C /* YDPhotoBrowserPresentationController.m */; };
+		17D74B9821032E6200CF8128 /* YDPhotoBrowserPresentationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D74B9621032E6200CF8128 /* YDPhotoBrowserPresentationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17D74B9921032E6200CF8128 /* YDPhotoBrowserPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B9721032E6200CF8128 /* YDPhotoBrowserPresentationController.m */; };
 		1AFA8A0FBBDBD3FC2166475613BC5329 /* SDWebImageCodersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 778B96BC36577369802743B035A069F6 /* SDWebImageCodersManager.m */; };
 		2025687E909B7553692B099540A1769D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5F9EB7B71A90A4DCEA59564993D01E /* Foundation.framework */; };
 		27A20D6CED9A89253AA398DDCC59DDC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5F9EB7B71A90A4DCEA59564993D01E /* Foundation.framework */; };
@@ -198,8 +198,8 @@
 		147D25887B6653172266417E4CAB5E15 /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
 		167DAE2943E44675F06F8CE851EE8F60 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressAnimatedView.m; path = SVProgressHUD/SVProgressAnimatedView.m; sourceTree = "<group>"; };
 		176CDEF86A5169C61B3C26DB34FDC1CA /* SDWebImage-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SDWebImage-umbrella.h"; sourceTree = "<group>"; };
-		1774B3A72101E40D0020F16C /* YDPhotoBrowserPresentationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDPhotoBrowserPresentationController.h; sourceTree = "<group>"; };
-		1774B3A82101E40D0020F16C /* YDPhotoBrowserPresentationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDPhotoBrowserPresentationController.m; sourceTree = "<group>"; };
+		17D74B9621032E6200CF8128 /* YDPhotoBrowserPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YDPhotoBrowserPresentationController.h; path = YDPhotoBrowser/Classes/YDPhotoBrowserPresentationController.h; sourceTree = "<group>"; };
+		17D74B9721032E6200CF8128 /* YDPhotoBrowserPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YDPhotoBrowserPresentationController.m; path = YDPhotoBrowser/Classes/YDPhotoBrowserPresentationController.m; sourceTree = "<group>"; };
 		189D5FE55C3D55240CA057B896D10C1C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1A13BD68D0B3C99915AAEDC5D0CE0955 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A20C3158758F19F1E13483F1FC2C64B /* NSData+ImageContentType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+ImageContentType.m"; path = "SDWebImage/NSData+ImageContentType.m"; sourceTree = "<group>"; };
@@ -577,12 +577,12 @@
 		81D77709B6B38C099B43F0639E4AB83C /* YDPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				17D74B9621032E6200CF8128 /* YDPhotoBrowserPresentationController.h */,
+				17D74B9721032E6200CF8128 /* YDPhotoBrowserPresentationController.m */,
 				3FFDC64F5A929CF6AEC5B73E6B80B630 /* YDPhotoBrowser.h */,
 				55CAF337AB333004C0149DB00A808CE3 /* YDPhotoBrowser.m */,
 				6C8678D83AE4A506CD7FF897C515F498 /* YDPhotoScrollView.h */,
 				BE8EE14DA004662EAAFE8035B84ECD69 /* YDPhotoScrollView.m */,
-				1774B3A72101E40D0020F16C /* YDPhotoBrowserPresentationController.h */,
-				1774B3A82101E40D0020F16C /* YDPhotoBrowserPresentationController.m */,
 				15B07198C947AF867B87BCBBFCA81D64 /* Pod */,
 				EAE2AAB0B3F630C77F7291629EFB81E7 /* Support Files */,
 			);
@@ -784,7 +784,7 @@
 			files = (
 				3C2D878746FD9B424B885BA17D86A120 /* YDPhotoBrowser-umbrella.h in Headers */,
 				7C22AC2525C5734AC900B47C0A2FB072 /* YDPhotoBrowser.h in Headers */,
-				1774B3A92101E40D0020F16C /* YDPhotoBrowserPresentationController.h in Headers */,
+				17D74B9821032E6200CF8128 /* YDPhotoBrowserPresentationController.h in Headers */,
 				C330C92A19D2AC854C3F9E034A06E375 /* YDPhotoScrollView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1010,8 +1010,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17D74B9921032E6200CF8128 /* YDPhotoBrowserPresentationController.m in Sources */,
 				E63CBA9903EA0F405AC353872F2002A9 /* YDPhotoBrowser-dummy.m in Sources */,
-				1774B3AA2101E40D0020F16C /* YDPhotoBrowserPresentationController.m in Sources */,
 				44E5B7197C94A6283E717C9ECA1869FA /* YDPhotoBrowser.m in Sources */,
 				D87E898736AD9E98B5F9CF4BFC9D0FB3 /* YDPhotoScrollView.m in Sources */,
 			);
