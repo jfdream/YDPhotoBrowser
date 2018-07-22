@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YDPhotoBrowser'
-  s.version          = '1.0.8'
+  s.version          = '1.0.9'
   s.summary          = 'A easy to use frameworks for browsering image,include rotation,zoom in and zoom out etc.'
 
 # This description is used to generate tags and improve search results.
@@ -42,4 +42,6 @@ Pod::Spec.new do |s|
    s.dependency 'Masonry'
    s.dependency 'SVProgressHUD'
    s.dependency 'ZFPlayer'
+   s.dependency 'ZFPlayer/ControlView'
+   s.dependency 'ZFPlayer/AVPlayer'
 end
