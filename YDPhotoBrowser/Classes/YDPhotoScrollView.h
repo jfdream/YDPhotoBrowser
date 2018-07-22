@@ -7,6 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+
+typedef enum : NSUInteger {
+    YDResourceTypePhoto,
+    YDResourceTypeVideo
+} YDResourceType;
+
 @interface YDPhoto : NSObject
 
 /**
@@ -32,8 +38,15 @@
  */
 @property (nonatomic)CGSize photoSize;
 
+/**
+ 资源类型，是否图片或视频
+ */
+@property (nonatomic)YDResourceType type;
 
-@property (nonatomic)BOOL isVideo;
+/**
+ 视频标题
+ */
+@property (nonatomic,strong)NSString * videoTitle;
 
 @end
 
@@ -50,4 +63,5 @@
 @property (nonatomic)NSInteger index;
 @property (nonatomic,weak)id <YDPhotoScrollViewDelegate> tapDelegate;
 @property (nonatomic,strong,readonly) UIImage * image;
+-(void)viewDidDisappear;
 @end

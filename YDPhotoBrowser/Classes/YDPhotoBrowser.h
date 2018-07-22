@@ -15,6 +15,7 @@
 - (YDPhoto *)photoBrowser:(YDPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index;
 - (NSInteger)numberOfPagesInPhotoBrowser:(YDPhotoBrowser *)photoBrowser;
 - (UIViewController *)photoBrowserParentViewController;
+- (NSInteger)startIndexOfPagesInPhotoBrowser:(YDPhotoBrowser *)photoBrowser;
 @optional
 - (UIImageView *)photoBrowser:(YDPhotoBrowser *)photoBrowser showFromIndex:(NSInteger)fromIndex;
 - (UIImageView *)photoBrowser:(YDPhotoBrowser *)photoBrowser hideToIndex:(NSInteger)toIndex;

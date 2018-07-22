@@ -11,6 +11,7 @@
 #endif
 
 #import "YDPhotoBrowser.h"
+#import "YDPhotoBrowserPresentationController.h"
 #import "YDPhotoScrollView.h"
 
 FOUNDATION_EXPORT double YDPhotoBrowserVersionNumber;

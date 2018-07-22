@@ -1,6 +1,6 @@
 {
   "name": "YDPhotoBrowser",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "summary": "A easy to use frameworks for browsering image,include rotation,zoom in and zoom out etc.",
   "description": "A easy to use frameworks for browsering image,rotation,zoom in and zoom out,custom dismiss annimation.",
   "homepage": "https://github.com/jfdream/YDPhotoBrowser",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/jfdream/YDPhotoBrowser.git",
-    "tag": "1.0.2"
+    "tag": "1.0.6"
   },
   "platforms": {
     "ios": "8.0"
@@ -27,6 +27,9 @@
 
     ],
     "SVProgressHUD": [
+
+    ],
+    "ZFPlayer": [
 
     ]
   }

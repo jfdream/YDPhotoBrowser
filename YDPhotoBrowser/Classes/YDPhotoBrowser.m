@@ -8,6 +8,7 @@
 
 #import "YDPhotoBrowser.h"
 #import "Masonry.h"
+#import "YDPhotoManager.h"
 #import "YDPhotoBrowserPresentationController.h"
 #define MAX_SHOW_NUMBER          5
 #define MAX_DURATION             0.3
@@ -47,12 +48,14 @@
     CGRect _frameOfPresentedViewInContainerViewOrigin;
     BOOL _isEnlarge;
     BOOL _isEnlargeFinish;
-    
+    BOOL _isPlaying;
+    CGSize _videoSize;
 }
 -(id)init{
     self = [super init];
     if (self) {
         self.view.backgroundColor = [UIColor blackColor];
+        
         _recyclePhotos = [NSMutableArray new];
         _pagingScrollView = [[UIScrollView alloc] init];_pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _pagingScrollView.pagingEnabled = YES;
@@ -83,10 +86,6 @@
         [self.view addSubview:_topImageView];
     }
     return self;
-}
--(void)hiddenMainElement:(BOOL)hidden{
-    pageControl.hidden = hidden;
-    _pagingScrollView.hidden = hidden;
 }
 -(void)view:(UIView *)view doubleTapDetected:(UITapGestureRecognizer *)touch{
     
@@ -142,7 +141,7 @@
         [self.view.window addSubview:_topImageView];
         _topImageView.image = hiddenImageView.image;
         _topImageView.hidden = NO;
-        [self hiddenMainElement:YES];
+        self.view.hidden = YES;
         CGRect frame = [hiddenImageView.superview convertRect:hiddenImageView.frame toView:self.view];
         if ([self.delegate respondsToSelector:@selector(photoBrowser:hideToIndexFromCell:)]) {
             NSIndexPath * indexPath = [self.delegate photoBrowser:self hideToIndexFromCell:_currentIndex];
@@ -164,17 +163,18 @@
                 CGSize size = hiddenImageView.frame.size;
                 frame.size = size;
                 frame.origin = origin;
-                CGFloat originX = [UIDevice isX]?88:64;
+                CGFloat originX = [UIDevice isX] ? 88 : 64;
                 frame.origin.y += originX;
             }
         }
-        [self dismissViewControllerAnimated:YES completion:nil];
         [UIView animateWithDuration:MAX_DURATION animations:^{
             self->_topImageView.frame = frame;
+            [YDPhotoManager sharedManager].containerView.frame = frame;
         } completion:^(BOOL finished) {
             [self->_topImageView removeFromSuperview];
+            [[YDPhotoManager sharedManager] shutdown];
         }];
-        
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
     else{
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -190,16 +190,30 @@
 -(void)panGestureClick:(UIPanGestureRecognizer *)gestureRecognizer{
     isPaning = YES;
     if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        [self hiddenMainElement:YES];
         self.view.hidden = YES;
-        [_topImageView removeFromSuperview];
-        [self.view.window addSubview:_topImageView];
-        for (YDPhotoScrollView * _scrollView in _pagingScrollView.subviews) {
-            if (_scrollView.index == _currentIndex) {
-                _topImageView.image = _scrollView.image;
-            }
+        _isPlaying = NO;
+        if ([YDPhotoManager sharedManager].playerManager.isPlaying) {
+//            _containerViewSupper = [YDPhotoManager sharedManager].containerView.superview;
+//            [[YDPhotoManager sharedManager].containerView removeFromSuperview];
+//            CGRect frame;
+//            _isPlaying = YES;
+//            _videoSize = [YDPhotoManager sharedManager].playerManager.presentationSize;
+//            _videoSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width * _videoSize.height / _videoSize.width);
+//            frame.size = _videoSize;
+//            [YDPhotoManager sharedManager].containerView.frame = frame;
+//            [YDPhotoManager sharedManager].containerView.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
+//            [self.view.window addSubview:[YDPhotoManager sharedManager].containerView];
         }
-        _topImageView.hidden = NO;
+        else{
+            [_topImageView removeFromSuperview];
+            [self.view.window addSubview:_topImageView];
+            for (YDPhotoScrollView * _scrollView in _pagingScrollView.subviews) {
+                if (_scrollView.index == _currentIndex) {
+                    _topImageView.image = _scrollView.image;
+                }
+            }
+            _topImageView.hidden = NO;
+        }
         _panGestureStartPoint = [gestureRecognizer locationInView:self.view];
     }else if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {
         CGPoint currentPoint = [gestureRecognizer locationInView:self.view];
@@ -209,14 +223,21 @@
         centerPoint.x += offsetX;
         centerPoint.y += offsetY;
         CGSize imageSize = [UIScreen mainScreen].bounds.size;
+        if ([YDPhotoManager sharedManager].playerManager.isPlaying) {
+            imageSize = _videoSize;
+        }
         if (offsetY > 0) {
             imageSize.height -= offsetY;
             imageSize.width -= offsetY * ([UIScreen mainScreen].bounds.size.width / [UIScreen mainScreen].bounds.size.height);
+            if (_isPlaying) {
+                imageSize.width -= offsetY * (_videoSize.width / _videoSize.height);
+            }
         }
         CGRect frame = CGRectMake(centerPoint.x - imageSize.width/2, centerPoint.y - imageSize.height/2, imageSize.width, imageSize.height);
         YDPhotoBrowserPresentationController * _presentationController = (YDPhotoBrowserPresentationController *)self.presentationController;
         [UIView animateWithDuration:0.1 animations:^{
             self->_topImageView.frame = frame;
+            [YDPhotoManager sharedManager].containerView.frame = frame;
             if (offsetY<=0) {
                 _presentationController.dimmingView.alpha = 1.f;
             }
@@ -236,17 +257,20 @@
             [self dismissViewControllerAnimated:YES completion:nil];
             [UIView animateWithDuration:0.3 animations:^{
                 self->_topImageView.alpha = 0.f;
+                [YDPhotoManager sharedManager].containerView.alpha = 0.f;
             } completion:^(BOOL finished) {
                 [self->_topImageView removeFromSuperview];
+                [[YDPhotoManager sharedManager] shutdown];
             }];
         }
         else{
             [UIView animateWithDuration:0.3 animations:^{
                 self->_topImageView.frame = [UIScreen mainScreen].bounds;
+                [YDPhotoManager sharedManager].containerView.frame = [UIScreen mainScreen].bounds;
             } completion:^(BOOL finished) {
                 self.view.hidden = NO;
                 self->_topImageView.hidden = YES;
-                [self hiddenMainElement:NO];
+                [[YDPhotoManager sharedManager].containerView removeFromSuperview];
             }];
         }
     }
@@ -255,45 +279,52 @@
     _pageControlHidden = pageControlHidden;
     pageControl.hidden = pageControlHidden;
 }
+-(void)dealloc{
+    NSLog(@"%s",__func__);
+}
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (_isRotate) {
-        return;
-    }
+    if (_isRotate)  return;
     _currentIndex = scrollView.contentOffset.x / (_screenFrame.size.width + 2*PADDING);
     pageControl.currentPage = _currentIndex;
-    if (_lastCurrentIndex == _currentIndex) {
-        return;
-    }
+    if (_lastCurrentIndex == _currentIndex)  return;
+    [self judgeViewWillDisappear];
     _lastCurrentIndex = _currentIndex;
+    [self reusePages];
+}
+-(void)judgeViewWillDisappear{
+    for (YDPhotoScrollView * _scrollView in _recyclePhotos) {
+        if (_scrollView.index == _lastCurrentIndex) {
+            [_scrollView viewDidDisappear];
+            break;
+        }
+    }
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [[YDPhotoManager sharedManager] shutdown];
+}
+-(void)reusePages{
     if ((_currentIndex + 1) > _currentLoadMaxIndex && (_currentIndex + 1) < _totalPage) {
-        
         _currentLoadMaxIndex = (_currentLoadMaxIndex + 1);
         YDPhoto * photo = [self.delegate photoBrowser:self photoAtIndex:_currentLoadMaxIndex];
         YDPhotoScrollView * _scrollView = _recyclePhotos.firstObject;
-        
         [_recyclePhotos removeObjectAtIndex:0];
         [_recyclePhotos addObject:_scrollView];
-
         _scrollView.photo = photo;
         _scrollView.frame = [self frameForPageAtIndex:_currentLoadMaxIndex];
         _scrollView.index = _currentLoadMaxIndex;
-        
         _currentLoadMinIndex = (_currentLoadMinIndex + 1);
     }
     
     if ((_currentIndex - 1) < _currentLoadMinIndex && (_currentIndex - 1) >= 0) {
-        
         _currentLoadMinIndex = _currentLoadMinIndex - 1;
         YDPhoto * photo = [self.delegate photoBrowser:self photoAtIndex:_currentLoadMinIndex];
-        
         YDPhotoScrollView * _scrollView = _recyclePhotos.lastObject;
         [_recyclePhotos removeLastObject];
         [_recyclePhotos insertObject:_scrollView atIndex:0];
-        
         _scrollView.photo = photo;
         _scrollView.frame = [self frameForPageAtIndex:_currentLoadMinIndex];
         _scrollView.index = _currentLoadMinIndex;
-        
         _currentLoadMaxIndex = (_currentLoadMaxIndex - 1);
     }
 }
@@ -311,11 +342,20 @@
         [self.delegate photoBrowser:self longPressImage:_scrollView.image];
     }
 }
+-(BOOL)shouldAutorotate{
+    return YES;
+}
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskAll;
+}
 -(void)reloadData{
     if (![self.delegate respondsToSelector:@selector(photoBrowserParentViewController)]) {
         @throw @"You must initialize parentViewController method!";
     }
     _parentViewController = [self.delegate photoBrowserParentViewController];
+    [[YDPhotoManager sharedManager] launch];
+    YDPhotoBrowserPresentationController * presentationController = [[YDPhotoBrowserPresentationController alloc]initWithPresentedViewController:self presentingViewController:_parentViewController];
+    self.transitioningDelegate = presentationController;
     [_parentViewController presentViewController:self animated:YES completion:nil];
 
     _totalPage = [self.delegate numberOfPagesInPhotoBrowser:self];
@@ -326,7 +366,12 @@
     if (_totalPage>5) {
         showNumber = 5;
     }
-    _currentIndex = 0;
+    if ([self.delegate respondsToSelector:@selector(startIndexOfPagesInPhotoBrowser:)]) {
+        _currentIndex = [self.delegate startIndexOfPagesInPhotoBrowser:self];
+    }
+    else{
+        _currentIndex = 0;
+    }
     _currentLoadMinIndex = 0;
     _currentLoadMaxIndex = (showNumber - 1);
     for (NSInteger i=0; i<showNumber; i++) {
@@ -340,7 +385,11 @@
         [_pagingScrollView addSubview:_photoScrollView];
         [_recyclePhotos addObject:_photoScrollView];
     }
-
+    if (_currentIndex != 0) {
+        CGFloat xOffset = (_screenFrame.size.width + 2*PADDING) * _currentIndex;
+        _pagingScrollView.contentOffset = CGPointMake(xOffset, 0);
+        [self reusePages];
+    }
     if([self.delegate respondsToSelector:@selector(photoBrowser:showFromIndex:)]){
         UIWindow * topWindow = [UIApplication sharedApplication].delegate.window;
         UIImageView * fromImageView = [self.delegate photoBrowser:self showFromIndex:_currentIndex];

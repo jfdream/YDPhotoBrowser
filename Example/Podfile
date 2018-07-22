@@ -5,6 +5,9 @@ target 'YDPhotoBrowser_Example' do
   pod 'SDWebImage'
   pod 'Masonry'
   pod 'SVProgressHUD'
+  pod 'ZFPlayer'
+  pod 'ZFPlayer/AVPlayer'
+  pod 'ZFPlayer/ControlView'
 
   target 'YDPhotoBrowser_Tests' do
     inherit! :search_paths

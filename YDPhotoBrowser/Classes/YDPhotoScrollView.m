@@ -10,6 +10,8 @@
 #import "UIImageView+WebCache.h"
 #import "Masonry.h"
 #import "SVProgressHUD.h"
+#import "YDPhotoManager.h"
+#import "YDPhotoBrowser.h"
 
 @implementation YDPhoto
 
@@ -18,9 +20,10 @@
 
 static NSString * MWPHOTO_PROGRESS_NOTIFICATION = @"MWPHOTO_PROGRESS_NOTIFICATION";
 
-@interface YDPhotoScrollView()<UIScrollViewDelegate,UIGestureRecognizerDelegate>
+@interface YDPhotoScrollView()<UIScrollViewDelegate,UIGestureRecognizerDelegate,YDPhotoManagerDelegate>
 {
     CGRect _lastScreenBounds;
+    UIButton * playButton;
 }
 @property (nonatomic,strong)UIActivityIndicatorView * indicatorView;
 @property (nonatomic,strong)UIImageView * imageView;
@@ -50,7 +53,6 @@ static NSString * MWPHOTO_PROGRESS_NOTIFICATION = @"MWPHOTO_PROGRESS_NOTIFICATIO
         UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressGestureClick:)];
         [self.imageView addGestureRecognizer:longPressGesture];
         
-        
         UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGestureClick:)];
         tapGesture.numberOfTapsRequired = 1;
         [self.imageView addGestureRecognizer:tapGesture];
@@ -60,6 +62,15 @@ static NSString * MWPHOTO_PROGRESS_NOTIFICATION = @"MWPHOTO_PROGRESS_NOTIFICATIO
         [self.imageView addGestureRecognizer:doubleTapGesture];
         
         [tapGesture requireGestureRecognizerToFail:doubleTapGesture];
+        
+        playButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        playButton.frame = CGRectMake(0, 0, 44, 44);
+        [playButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchUpInside];
+        UIImage * image = ZFPlayer_Image(@"new_allPlay_44x44_");
+        [playButton setImage:image forState:UIControlStateNormal];
+        playButton.center = CGPointMake(_lastScreenBounds.size.width/2, _lastScreenBounds.size.height/2);
+        [self addSubview:playButton];
+        playButton.hidden = YES;
         
     }
     return self;
@@ -97,7 +108,8 @@ static NSString * MWPHOTO_PROGRESS_NOTIFICATION = @"MWPHOTO_PROGRESS_NOTIFICATIO
 }
 -(void)setPhoto:(YDPhoto *)photo{
     _photo = photo;
-    if (photo.resource) {
+    playButton.hidden = YES;
+    if (photo.resource && photo.type == YDResourceTypePhoto) {
         self.imageView.image = photo.resource;
         return;
     }
@@ -105,17 +117,23 @@ static NSString * MWPHOTO_PROGRESS_NOTIFICATION = @"MWPHOTO_PROGRESS_NOTIFICATIO
     UIImage * resource;
     if (photo.thumbnail) {
         placeholderImage = photo.thumbnail;
-        resource = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:photo.resourceURL.absoluteString];
+        if (_photo.type == YDResourceTypePhoto && _photo.resourceURL) {
+            resource = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:photo.resourceURL.absoluteString];
+        }
     }
     else{
-        placeholderImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:photo.thumbnailURL.absoluteString];
-        resource = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:photo.resourceURL.absoluteString];
+        if (photo.thumbnailURL) {
+            placeholderImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:photo.thumbnailURL.absoluteString];
+        }
+        if (_photo.type == YDResourceTypePhoto && _photo.resourceURL) {
+            resource = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:photo.resourceURL.absoluteString];
+        }
     }
     if (resource) {
         self.imageView.image = resource;
     }
     else{
-        if (photo.resourceURL) {
+        if (photo.resourceURL && photo.type == YDResourceTypePhoto) {
             if ([photo.resourceURL.scheme containsString:@"file"]) {
                 self.imageView.image = [UIImage imageWithContentsOfFile:photo.resourceURL.absoluteString];
             }
@@ -135,6 +153,25 @@ static NSString * MWPHOTO_PROGRESS_NOTIFICATION = @"MWPHOTO_PROGRESS_NOTIFICATIO
             self.imageView.image = placeholderImage;
         }
     }
+    if (photo.type == YDResourceTypeVideo) {
+        playButton.hidden = NO;
+    }
+}
+- (void)play{
+    NSString *URLString = [self.photo.resourceURL.absoluteString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    [YDPhotoManager sharedManager].playerManager.assetURL = [NSURL URLWithString:URLString];
+    NSString * videoTitle = self.photo.videoTitle?self.photo.videoTitle : @"";
+    NSString * coverURLString = [self.photo.thumbnailURL.absoluteString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    [[YDPhotoManager sharedManager].controlView showTitle:videoTitle coverURLString:coverURLString fullScreenMode:ZFFullScreenModePortrait];
+    [self addSubview:[YDPhotoManager sharedManager].containerView];
+    [YDPhotoManager sharedManager].containerView.frame = [UIScreen mainScreen].bounds;
+}
+-(void)dealloc{
+    NSLog(@"====%s====",__func__);
+}
+-(void)viewDidDisappear{
+    [[YDPhotoManager sharedManager].containerView removeFromSuperview];
+    [[YDPhotoManager sharedManager].player stop];
 }
 -(UIImageView *)imageView{
     if (!_imageView) {
@@ -147,11 +184,12 @@ static NSString * MWPHOTO_PROGRESS_NOTIFICATION = @"MWPHOTO_PROGRESS_NOTIFICATIO
     [super layoutSubviews];
     CGSize boundsSize = self.bounds.size;
     if (_lastScreenBounds.size.width != [UIScreen mainScreen].bounds.size.width) {
-        // 旋转
         _imageView.frame = [UIScreen mainScreen].bounds;
         _lastScreenBounds = _imageView.frame;
         self.contentSize = self.imageView.frame.size;
         _indicatorView.center = CGPointMake(_imageView.frame.size.width/2, _imageView.frame.size.height/2);
+        playButton.center = CGPointMake(_lastScreenBounds.size.width/2, _lastScreenBounds.size.height/2);
+        [YDPhotoManager sharedManager].containerView.frame = _lastScreenBounds;
         return;
     }
     CGRect frameToCenter = _imageView.frame;
@@ -161,7 +199,6 @@ static NSString * MWPHOTO_PROGRESS_NOTIFICATION = @"MWPHOTO_PROGRESS_NOTIFICATIO
     } else {
         frameToCenter.origin.x = 0;
     }
-    
     // Vertically
     if (frameToCenter.size.height < boundsSize.height) {
         frameToCenter.origin.y = floorf((boundsSize.height - frameToCenter.size.height) / 2.0);

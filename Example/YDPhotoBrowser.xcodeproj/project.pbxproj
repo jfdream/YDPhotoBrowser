@@ -12,6 +12,11 @@
 		17D74B912102DE2500CF8128 /* AAPLCustomPresentationFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B8C2102DE2500CF8128 /* AAPLCustomPresentationFirstViewController.m */; };
 		17D74B922102DE2500CF8128 /* AAPLCustomPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B8D2102DE2500CF8128 /* AAPLCustomPresentationController.m */; };
 		17D74B932102DE2500CF8128 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B8F2102DE2500CF8128 /* DemoViewController.m */; };
+		17D74BA42103690100CF8128 /* AAPLSwipeFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B9A2103690000CF8128 /* AAPLSwipeFirstViewController.m */; };
+		17D74BA52103690100CF8128 /* AAPLSwipeTransitionInteractionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B9B2103690000CF8128 /* AAPLSwipeTransitionInteractionController.m */; };
+		17D74BA62103690100CF8128 /* AAPLSwipeSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B9C2103690000CF8128 /* AAPLSwipeSecondViewController.m */; };
+		17D74BA72103690100CF8128 /* AAPLSwipeTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B9D2103690000CF8128 /* AAPLSwipeTransitionDelegate.m */; };
+		17D74BA82103690100CF8128 /* AAPLSwipeTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B9F2103690000CF8128 /* AAPLSwipeTransitionAnimator.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -52,6 +57,16 @@
 		17D74B8D2102DE2500CF8128 /* AAPLCustomPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCustomPresentationController.m; sourceTree = "<group>"; };
 		17D74B8E2102DE2500CF8128 /* AAPLCustomPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCustomPresentationController.h; sourceTree = "<group>"; };
 		17D74B8F2102DE2500CF8128 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		17D74B9A2103690000CF8128 /* AAPLSwipeFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSwipeFirstViewController.m; sourceTree = "<group>"; };
+		17D74B9B2103690000CF8128 /* AAPLSwipeTransitionInteractionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSwipeTransitionInteractionController.m; sourceTree = "<group>"; };
+		17D74B9C2103690000CF8128 /* AAPLSwipeSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSwipeSecondViewController.m; sourceTree = "<group>"; };
+		17D74B9D2103690000CF8128 /* AAPLSwipeTransitionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSwipeTransitionDelegate.m; sourceTree = "<group>"; };
+		17D74B9E2103690000CF8128 /* AAPLSwipeTransitionInteractionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSwipeTransitionInteractionController.h; sourceTree = "<group>"; };
+		17D74B9F2103690000CF8128 /* AAPLSwipeTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSwipeTransitionAnimator.m; sourceTree = "<group>"; };
+		17D74BA02103690000CF8128 /* AAPLSwipeTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSwipeTransitionAnimator.h; sourceTree = "<group>"; };
+		17D74BA12103690000CF8128 /* AAPLSwipeSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSwipeSecondViewController.h; sourceTree = "<group>"; };
+		17D74BA22103690100CF8128 /* AAPLSwipeTransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSwipeTransitionDelegate.h; sourceTree = "<group>"; };
+		17D74BA32103690100CF8128 /* AAPLSwipeFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSwipeFirstViewController.h; sourceTree = "<group>"; };
 		33B2C982A7A036B106C2AFE7 /* Pods_YDPhotoBrowser_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YDPhotoBrowser_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* YDPhotoBrowser_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YDPhotoBrowser_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -151,6 +166,16 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* YDViewController.h */,
 				6003F5A6195388D20070C39A /* YDViewController.m */,
+				17D74BA32103690100CF8128 /* AAPLSwipeFirstViewController.h */,
+				17D74B9A2103690000CF8128 /* AAPLSwipeFirstViewController.m */,
+				17D74BA12103690000CF8128 /* AAPLSwipeSecondViewController.h */,
+				17D74B9C2103690000CF8128 /* AAPLSwipeSecondViewController.m */,
+				17D74BA02103690000CF8128 /* AAPLSwipeTransitionAnimator.h */,
+				17D74B9F2103690000CF8128 /* AAPLSwipeTransitionAnimator.m */,
+				17D74BA22103690100CF8128 /* AAPLSwipeTransitionDelegate.h */,
+				17D74B9D2103690000CF8128 /* AAPLSwipeTransitionDelegate.m */,
+				17D74B9E2103690000CF8128 /* AAPLSwipeTransitionInteractionController.h */,
+				17D74B9B2103690000CF8128 /* AAPLSwipeTransitionInteractionController.m */,
 				17D74B8E2102DE2500CF8128 /* AAPLCustomPresentationController.h */,
 				17D74B8D2102DE2500CF8128 /* AAPLCustomPresentationController.m */,
 				17D74B8B2102DE2500CF8128 /* AAPLCustomPresentationFirstViewController.h */,
@@ -401,6 +426,7 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/YDPhotoBrowser/YDPhotoBrowser.framework",
+				"${BUILT_PRODUCTS_DIR}/ZFPlayer/ZFPlayer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -408,6 +434,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YDPhotoBrowser.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZFPlayer.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -436,12 +463,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17D74BA52103690100CF8128 /* AAPLSwipeTransitionInteractionController.m in Sources */,
 				6003F59E195388D20070C39A /* YDAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* YDViewController.m in Sources */,
+				17D74BA62103690100CF8128 /* AAPLSwipeSecondViewController.m in Sources */,
 				17D74B922102DE2500CF8128 /* AAPLCustomPresentationController.m in Sources */,
+				17D74BA72103690100CF8128 /* AAPLSwipeTransitionDelegate.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				17D74B912102DE2500CF8128 /* AAPLCustomPresentationFirstViewController.m in Sources */,
+				17D74BA82103690100CF8128 /* AAPLSwipeTransitionAnimator.m in Sources */,
 				17D74B932102DE2500CF8128 /* DemoViewController.m in Sources */,
+				17D74BA42103690100CF8128 /* AAPLSwipeFirstViewController.m in Sources */,
 				17D74B902102DE2500CF8128 /* AAPLCustomPresentationSecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
