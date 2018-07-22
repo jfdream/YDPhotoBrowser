@@ -25,10 +25,10 @@
     _playerManager = [[ZFAVPlayerManager alloc]init];
     _player = [[ZFPlayerController alloc]initWithPlayerManager:_playerManager containerView:self.containerView];
     _player.controlView = self.controlView;
-    __weak YDPhotoManager * weakSelf = self;
-    self.controlView.buttonClick = ^(BOOL selected){
-        [weakSelf.delegate videoCloseButtonClick];
-    };
+//    __weak YDPhotoManager * weakSelf = self;
+//    self.controlView.buttonClick = ^(BOOL selected){
+//        [weakSelf.delegate videoCloseButtonClick];
+//    };
     _player.disableGestureTypes = ZFPlayerDisableGestureTypesDoubleTap | ZFPlayerDisableGestureTypesPan | ZFPlayerDisableGestureTypesPinch;
 }
 -(void)shutdown{
