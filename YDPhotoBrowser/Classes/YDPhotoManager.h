@@ -10,7 +10,6 @@
 
 
 @protocol YDPhotoManagerDelegate<NSObject>
--(void)videoOrientationWillChange;
 -(void)videoCloseButtonClick;
 @end
 
