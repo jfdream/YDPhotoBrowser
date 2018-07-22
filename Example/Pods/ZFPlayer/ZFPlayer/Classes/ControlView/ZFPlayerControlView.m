@@ -77,6 +77,7 @@ static const CGFloat ZFPlayerControlViewAutoFadeOutTimeInterval = 0.25f;
 
 @property (nonatomic, strong) ZFVolumeBrightnessView *volumeBrightnessView;
 
+@property (nonatomic, strong) UIButton * closeButton;
 @end
 
 @implementation ZFPlayerControlView
@@ -159,6 +160,7 @@ static const CGFloat ZFPlayerControlViewAutoFadeOutTimeInterval = 0.25f;
     self.volumeBrightnessView.frame = CGRectMake(min_x, min_y, min_w, min_h);
     self.volumeBrightnessView.center = self.center;
     
+    self.closeButton.center = CGPointMake(13 + 20, 33 + 20);
 }
 
 - (void)dealloc {
@@ -182,6 +184,8 @@ static const CGFloat ZFPlayerControlViewAutoFadeOutTimeInterval = 0.25f;
     [self.fastView addSubview:self.fastProgressView];
     [self addSubview:self.bottomPgrogress];
     [self addSubview:self.volumeBrightnessView];
+    
+    [self addSubview:self.closeButton];
 }
 
 - (void)autoFadeOutControlView {
@@ -217,6 +221,7 @@ static const CGFloat ZFPlayerControlViewAutoFadeOutTimeInterval = 0.25f;
     } completion:^(BOOL finished) {
         self.bottomPgrogress.hidden = NO;
     }];
+    self.closeButton.hidden = YES;
 }
 
 /// 显示控制层
@@ -233,6 +238,7 @@ static const CGFloat ZFPlayerControlViewAutoFadeOutTimeInterval = 0.25f;
     } completion:^(BOOL finished) {
         [self autoFadeOutControlView];
     }];
+    self.closeButton.hidden = NO;
 }
 
 /// 音量改变的通知
@@ -255,6 +261,7 @@ static const CGFloat ZFPlayerControlViewAutoFadeOutTimeInterval = 0.25f;
     self.bottomPgrogress.bufferValue = 0;
     self.floatControlView.hidden = YES;
     self.failBtn.hidden = YES;
+    self.closeButton.hidden = YES;
     self.portraitControlView.hidden = self.player.isFullScreen;
     self.landScapeControlView.hidden = !self.player.isFullScreen;
     if (self.controlViewAppeared) {
@@ -601,7 +608,20 @@ static const CGFloat ZFPlayerControlViewAutoFadeOutTimeInterval = 0.25f;
     }
     return _failBtn;
 }
-
+-(UIButton *)closeButton{
+    if (!_closeButton) {
+        _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _closeButton.frame = CGRectMake(0, 0, 34, 34);
+        [_closeButton setImage:ZFPlayer_Image(@"ZFPlayer_closeWatch") forState:UIControlStateNormal];
+        [_closeButton addTarget:self action:@selector(closeButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _closeButton;
+}
+-(void)closeButtonClick{
+    if (self.buttonClick) {
+        self.buttonClick(YES);
+    }
+}
 - (ZFSliderView *)bottomPgrogress {
     if (!_bottomPgrogress) {
         _bottomPgrogress = [[ZFSliderView alloc] init];

@@ -94,11 +94,11 @@
 //    self.playBtn.frame = CGRectMake(x, y, w, h);
 }
 -(void)btnClick{
-    _photoBrowser = [[YDPhotoBrowser alloc]init];
-    _photoBrowser.delegate = self;
-    _photoBrowser.panToDismiss = YES;
+    YDPhotoBrowser * hello = [[YDPhotoBrowser alloc]init];
+    hello.delegate = self;
+    hello.panToDismiss = YES;
 //    _photoBrowser.enableCustomDismiss = YES;
-    [_photoBrowser reloadData];
+    [hello reloadData];
     
 //    AAPLCustomPresentationFirstViewController * fvc = [[AAPLCustomPresentationFirstViewController alloc]init];
 //    [self presentViewController:fvc animated:YES completion:nil];

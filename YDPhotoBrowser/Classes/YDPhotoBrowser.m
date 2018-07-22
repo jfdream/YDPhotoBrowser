@@ -21,7 +21,7 @@
 }
 @end
 
-@interface YDPhotoBrowser()<UIScrollViewDelegate,YDPhotoScrollViewDelegate>
+@interface YDPhotoBrowser()<UIScrollViewDelegate,YDPhotoScrollViewDelegate,YDPhotoManagerDelegate>
 @property (nonatomic,strong)UIScrollView * pagingScrollView;
 @end
 @implementation YDPhotoBrowser
@@ -50,6 +50,9 @@
     BOOL _isEnlargeFinish;
     BOOL _isPlaying;
     CGSize _videoSize;
+    
+    UIView * _containerViewSupper;
+    
 }
 -(id)init{
     self = [super init];
@@ -193,16 +196,16 @@
         self.view.hidden = YES;
         _isPlaying = NO;
         if ([YDPhotoManager sharedManager].playerManager.isPlaying) {
-//            _containerViewSupper = [YDPhotoManager sharedManager].containerView.superview;
-//            [[YDPhotoManager sharedManager].containerView removeFromSuperview];
-//            CGRect frame;
-//            _isPlaying = YES;
-//            _videoSize = [YDPhotoManager sharedManager].playerManager.presentationSize;
-//            _videoSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width * _videoSize.height / _videoSize.width);
-//            frame.size = _videoSize;
-//            [YDPhotoManager sharedManager].containerView.frame = frame;
-//            [YDPhotoManager sharedManager].containerView.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
-//            [self.view.window addSubview:[YDPhotoManager sharedManager].containerView];
+            _containerViewSupper = [YDPhotoManager sharedManager].containerView.superview;
+            [[YDPhotoManager sharedManager].containerView removeFromSuperview];
+            CGRect frame;
+            _isPlaying = YES;
+            _videoSize = [YDPhotoManager sharedManager].playerManager.presentationSize;
+            _videoSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width * _videoSize.height / _videoSize.width);
+            frame.size = _videoSize;
+            [YDPhotoManager sharedManager].containerView.frame = frame;
+            [YDPhotoManager sharedManager].containerView.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
+            [self.view.window addSubview:[YDPhotoManager sharedManager].containerView];
         }
         else{
             [_topImageView removeFromSuperview];
@@ -228,9 +231,11 @@
         }
         if (offsetY > 0) {
             imageSize.height -= offsetY;
-            imageSize.width -= offsetY * ([UIScreen mainScreen].bounds.size.width / [UIScreen mainScreen].bounds.size.height);
             if (_isPlaying) {
                 imageSize.width -= offsetY * (_videoSize.width / _videoSize.height);
+            }
+            else{
+                imageSize.width -= offsetY * ([UIScreen mainScreen].bounds.size.width / [UIScreen mainScreen].bounds.size.height);
             }
         }
         CGRect frame = CGRectMake(centerPoint.x - imageSize.width/2, centerPoint.y - imageSize.height/2, imageSize.width, imageSize.height);
@@ -254,7 +259,6 @@
         CGPoint currentPoint = [gestureRecognizer locationInView:self.view];
         CGFloat offsetY = currentPoint.y - _panGestureStartPoint.y;
         if (offsetY > 180) {
-            [self dismissViewControllerAnimated:YES completion:nil];
             [UIView animateWithDuration:0.3 animations:^{
                 self->_topImageView.alpha = 0.f;
                 [YDPhotoManager sharedManager].containerView.alpha = 0.f;
@@ -262,6 +266,7 @@
                 [self->_topImageView removeFromSuperview];
                 [[YDPhotoManager sharedManager] shutdown];
             }];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
         else{
             [UIView animateWithDuration:0.3 animations:^{
@@ -271,6 +276,7 @@
                 self.view.hidden = NO;
                 self->_topImageView.hidden = YES;
                 [[YDPhotoManager sharedManager].containerView removeFromSuperview];
+                [self->_containerViewSupper addSubview:[YDPhotoManager sharedManager].containerView];
             }];
         }
     }
@@ -278,6 +284,9 @@
 -(void)setPageControlHidden:(BOOL)pageControlHidden{
     _pageControlHidden = pageControlHidden;
     pageControl.hidden = pageControlHidden;
+}
+-(void)videoCloseButtonClick{
+    [self view:nil singleTapDetected:nil];
 }
 -(void)dealloc{
     NSLog(@"%s",__func__);
@@ -348,11 +357,13 @@
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskAll;
 }
+
 -(void)reloadData{
     if (![self.delegate respondsToSelector:@selector(photoBrowserParentViewController)]) {
         @throw @"You must initialize parentViewController method!";
     }
     _parentViewController = [self.delegate photoBrowserParentViewController];
+    [YDPhotoManager sharedManager].delegate = self;
     [[YDPhotoManager sharedManager] launch];
     YDPhotoBrowserPresentationController * presentationController = [[YDPhotoBrowserPresentationController alloc]initWithPresentedViewController:self presentingViewController:_parentViewController];
     self.transitioningDelegate = presentationController;

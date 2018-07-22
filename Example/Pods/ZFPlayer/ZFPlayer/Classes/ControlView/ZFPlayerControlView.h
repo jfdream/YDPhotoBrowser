@@ -28,6 +28,8 @@
 #import "ZFPlayerMediaControl.h"
 #import "ZFSpeedLoadingView.h"
 
+typedef void(^ControlViewCloseButtonClick)(BOOL selected);
+
 @interface ZFPlayerControlView : UIView <ZFPlayerMediaControl>
 /// 竖屏控制层的View
 @property (nonatomic, strong, readonly) ZFPortraitControlView *portraitControlView;
@@ -49,8 +51,12 @@
 @property (nonatomic, strong, readonly) ZFSliderView *bottomPgrogress;
 /// 封面图
 @property (nonatomic, strong, readonly) UIImageView *coverImageView;
+
+@property (nonatomic, strong, readonly)UIButton * closeButton;
 /// 占位图，默认是灰色
 @property (nonatomic, strong) UIImage *placeholderImage;
+
+@property (nonatomic, strong) ControlViewCloseButtonClick buttonClick;
 
 /// 设置标题、封面、全屏模式
 - (void)showTitle:(NSString *)title coverURLString:(NSString *)coverUrl fullScreenMode:(ZFFullScreenMode)fullScreenMode;
