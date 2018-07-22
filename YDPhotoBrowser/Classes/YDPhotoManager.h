@@ -6,17 +6,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ZFPlayer.h"
-#import "ZFAVPlayerManager.h"
-#import "ZFPlayerController.h"
-#import "ZFPlayerControlView.h"
-#import "ZFUtilities.h"
+
 
 
 @protocol YDPhotoManagerDelegate<NSObject>
 -(void)videoOrientationWillChange;
 -(void)videoCloseButtonClick;
 @end
+
+@class ZFAVPlayerManager;
+@class ZFPlayerController;
+@class ZFPlayerControlView;
 
 @interface YDPhotoManager : NSObject
 +(YDPhotoManager *)sharedManager;

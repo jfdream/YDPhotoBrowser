@@ -9,6 +9,11 @@
 #import "YDPhotoBrowser.h"
 #import "Masonry.h"
 #import "YDPhotoManager.h"
+#import "ZFPlayer.h"
+#import "ZFAVPlayerManager.h"
+#import "ZFPlayerController.h"
+#import "ZFPlayerControlView.h"
+#import "ZFUtilities.h"
 #import "YDPhotoBrowserPresentationController.h"
 #define MAX_SHOW_NUMBER          5
 #define MAX_DURATION             0.3

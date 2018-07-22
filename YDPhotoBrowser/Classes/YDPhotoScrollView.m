@@ -12,6 +12,11 @@
 #import "SVProgressHUD.h"
 #import "YDPhotoManager.h"
 #import "YDPhotoBrowser.h"
+#import "ZFPlayer.h"
+#import "ZFAVPlayerManager.h"
+#import "ZFPlayerController.h"
+#import "ZFPlayerControlView.h"
+#import "ZFUtilities.h"
 
 @implementation YDPhoto
 
