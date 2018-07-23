@@ -10,6 +10,9 @@
 #import "YDPhotoScrollView.h"
 #import "YDPhotoBrowserPresentationController.h"
 
+
+// 请不要以全局变量的方式持有本类对象，由于该对象是一个 UIViewController，直接全局持有会导致对象的释放（内存泄露），也会导致内部视频无法播放
+
 @class YDPhotoBrowser;
 @protocol YDPhotoBrowserDelegate <NSObject>
 - (YDPhoto *)photoBrowser:(YDPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index;

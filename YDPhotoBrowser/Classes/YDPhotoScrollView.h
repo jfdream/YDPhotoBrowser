@@ -52,6 +52,7 @@ typedef enum : NSUInteger {
 
 
 @protocol YDPhotoScrollViewDelegate <NSObject>
+@optional
 - (void)view:(UIView *)view singleTapDetected:(UITapGestureRecognizer *)tapGesture;
 - (void)view:(UIView *)view doubleTapDetected:(UITapGestureRecognizer *)touch;
 - (void)view:(UIView *)view longPressTapDetected:(UILongPressGestureRecognizer *)touch;

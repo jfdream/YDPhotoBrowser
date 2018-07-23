@@ -22,7 +22,7 @@ pod 'YDPhotoBrowser'
 
 ## Author
 
-jfdream1992@126.com, yangyudong@rongcloud.cn
+jfdream1992@126.com
 
 ## License
 

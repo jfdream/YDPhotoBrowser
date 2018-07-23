@@ -167,12 +167,11 @@
                 UITableView * tableView = (UITableView *)tableViewCell.superview;
                 // cell in window rect
                 CGRect rect = [tableView rectForRowAtIndexPath:indexPath];
+                rect = [tableView convertRect:rect toView:self.view.window];
                 CGPoint origin = CGPointMake(rect.origin.x + hiddenImageView.frame.origin.x, rect.origin.y + hiddenImageView.frame.origin.y);
                 CGSize size = hiddenImageView.frame.size;
                 frame.size = size;
                 frame.origin = origin;
-                CGFloat originX = [UIDevice isX] ? 88 : 64;
-                frame.origin.y += originX;
             }
         }
         [UIView animateWithDuration:MAX_DURATION animations:^{
@@ -284,6 +283,7 @@
                 [self->_containerViewSupper addSubview:[YDPhotoManager sharedManager].containerView];
             }];
         }
+        isPaning = NO;
     }
 }
 -(void)setPageControlHidden:(BOOL)pageControlHidden{
@@ -292,9 +292,6 @@
 }
 -(void)videoCloseButtonClick{
     [self view:nil singleTapDetected:nil];
-}
--(void)dealloc{
-    NSLog(@"%s",__func__);
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (_isRotate)  return;
@@ -427,12 +424,11 @@
                 UITableView * tableView = (UITableView *)tableViewCell.superview;
                 // cell in window rect
                 CGRect rect = [tableView rectForRowAtIndexPath:indexPath];
+                rect = [tableView convertRect:rect toView:topWindow];
                 CGPoint origin = CGPointMake(rect.origin.x + fromImageView.frame.origin.x, rect.origin.y + fromImageView.frame.origin.y);
                 CGSize size = fromImageView.frame.size;
                 frame.size = size;
                 frame.origin = origin;
-                CGFloat originX = [UIDevice isX] ? 88 : 64;
-                frame.origin.y += originX;
             }
         }
         _topImageView.image = fromImageView.image;

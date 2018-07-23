@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YDPhotoBrowser'
-  s.version          = '1.1.1'
+  s.version          = '1.1.3'
   s.summary          = 'A easy to use frameworks for browsering image,include rotation,zoom in and zoom out etc.'
 
 # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/jfdream/YDPhotoBrowser'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'jfdream1992@126.com' => 'yangyudong@rongcloud.cn' }
+  s.author           = { 'jfdream1992@126.com' => 'jfdream' }
   s.source           = { :git => 'https://github.com/jfdream/YDPhotoBrowser.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 

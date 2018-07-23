@@ -171,9 +171,6 @@ static NSString * MWPHOTO_PROGRESS_NOTIFICATION = @"MWPHOTO_PROGRESS_NOTIFICATIO
     [self addSubview:[YDPhotoManager sharedManager].containerView];
     [YDPhotoManager sharedManager].containerView.frame = [UIScreen mainScreen].bounds;
 }
--(void)dealloc{
-    NSLog(@"====%s====",__func__);
-}
 -(void)viewDidDisappear{
     [[YDPhotoManager sharedManager].containerView removeFromSuperview];
     [[YDPhotoManager sharedManager].player stop];
