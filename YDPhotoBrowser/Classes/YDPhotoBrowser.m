@@ -63,7 +63,6 @@
     self = [super init];
     if (self) {
         self.view.backgroundColor = [UIColor blackColor];
-        
         _recyclePhotos = [NSMutableArray new];
         _pagingScrollView = [[UIScrollView alloc] init];_pagingScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _pagingScrollView.pagingEnabled = YES;
@@ -201,7 +200,6 @@
         if ([YDPhotoManager sharedManager].playerManager.isPlaying) {
             _containerViewSupper = [YDPhotoManager sharedManager].containerView.superview;
             [[YDPhotoManager sharedManager].containerView removeFromSuperview];
-            self.view.hidden = YES;
             CGRect frame;
             _isPlaying = YES;
             _videoSize = [YDPhotoManager sharedManager].playerManager.presentationSize;
@@ -210,17 +208,18 @@
             [YDPhotoManager sharedManager].containerView.frame = frame;
             [YDPhotoManager sharedManager].containerView.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, [UIScreen mainScreen].bounds.size.height/2);
             [self.view.window addSubview:[YDPhotoManager sharedManager].containerView];
+            self.view.hidden = YES;
         }
         else{
+            _topImageView.hidden = NO;
             [_topImageView removeFromSuperview];
             [self.view.window addSubview:_topImageView];
-            self.view.hidden = YES;
             for (YDPhotoScrollView * _scrollView in _pagingScrollView.subviews) {
                 if (_scrollView.index == _currentIndex) {
                     _topImageView.image = _scrollView.image;
                 }
             }
-            _topImageView.hidden = NO;
+            self.view.hidden = YES;
         }
         _panGestureStartPoint = [gestureRecognizer locationInView:self.view];
     }else if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {

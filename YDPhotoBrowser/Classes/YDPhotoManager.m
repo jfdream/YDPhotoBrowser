@@ -29,8 +29,8 @@
         _player = [[ZFPlayerController alloc]initWithPlayerManager:_playerManager containerView:self.containerView];
         _player.controlView = self.controlView;
         _player.disableGestureTypes = ZFPlayerDisableGestureTypesDoubleTap | ZFPlayerDisableGestureTypesPan | ZFPlayerDisableGestureTypesPinch;
+        _isLaunch = YES;
     }
-   
 }
 -(void)shutdown{
     if (_isLaunch) {

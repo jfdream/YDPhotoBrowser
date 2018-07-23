@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YDPhotoBrowser'
-  s.version          = '1.1.4'
-  s.summary          = 'A easy to use frameworks for browsering image,include rotation,zoom in and zoom out etc.'
+  s.version          = '1.1.5'
+  s.summary          = 'A easy to use frameworks for browsering image,include rotation,zoom in and zoom out etc.(support video preview,like wechat)'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
