@@ -197,11 +197,11 @@
 -(void)panGestureClick:(UIPanGestureRecognizer *)gestureRecognizer{
     isPaning = YES;
     if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        self.view.hidden = YES;
         _isPlaying = NO;
         if ([YDPhotoManager sharedManager].playerManager.isPlaying) {
             _containerViewSupper = [YDPhotoManager sharedManager].containerView.superview;
             [[YDPhotoManager sharedManager].containerView removeFromSuperview];
+            self.view.hidden = YES;
             CGRect frame;
             _isPlaying = YES;
             _videoSize = [YDPhotoManager sharedManager].playerManager.presentationSize;
@@ -214,6 +214,7 @@
         else{
             [_topImageView removeFromSuperview];
             [self.view.window addSubview:_topImageView];
+            self.view.hidden = YES;
             for (YDPhotoScrollView * _scrollView in _pagingScrollView.subviews) {
                 if (_scrollView.index == _currentIndex) {
                     _topImageView.image = _scrollView.image;
