@@ -131,6 +131,7 @@
 {
     return _photoBrowser.isEnlarge ? 0.3f : 0.f;
 }
+
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext
 {
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];

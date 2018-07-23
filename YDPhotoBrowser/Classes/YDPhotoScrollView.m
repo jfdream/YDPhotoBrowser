@@ -163,6 +163,7 @@ static NSString * MWPHOTO_PROGRESS_NOTIFICATION = @"MWPHOTO_PROGRESS_NOTIFICATIO
     }
 }
 - (void)play{
+    [[YDPhotoManager sharedManager] launch];
     NSString *URLString = [self.photo.resourceURL.absoluteString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     [YDPhotoManager sharedManager].playerManager.assetURL = [NSURL URLWithString:URLString];
     NSString * videoTitle = self.photo.videoTitle?self.photo.videoTitle : @"";

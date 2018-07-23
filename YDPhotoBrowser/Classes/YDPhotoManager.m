@@ -12,7 +12,9 @@
 #import "ZFPlayerControlView.h"
 #import "ZFUtilities.h"
 @implementation YDPhotoManager
-
+{
+    BOOL _isLaunch;
+}
 +(YDPhotoManager *)sharedManager{
     static YDPhotoManager * _manager = nil;
     static dispatch_once_t onceToken;
@@ -22,19 +24,25 @@
     return _manager;
 }
 -(void)launch{
-    _playerManager = [[ZFAVPlayerManager alloc]init];
-    _player = [[ZFPlayerController alloc]initWithPlayerManager:_playerManager containerView:self.containerView];
-    _player.controlView = self.controlView;
-    _player.disableGestureTypes = ZFPlayerDisableGestureTypesDoubleTap | ZFPlayerDisableGestureTypesPan | ZFPlayerDisableGestureTypesPinch;
+    if (!_isLaunch) {
+        _playerManager = [[ZFAVPlayerManager alloc]init];
+        _player = [[ZFPlayerController alloc]initWithPlayerManager:_playerManager containerView:self.containerView];
+        _player.controlView = self.controlView;
+        _player.disableGestureTypes = ZFPlayerDisableGestureTypesDoubleTap | ZFPlayerDisableGestureTypesPan | ZFPlayerDisableGestureTypesPinch;
+    }
+   
 }
 -(void)shutdown{
-    [self.containerView removeFromSuperview];
-    [self.controlView removeFromSuperview];
-    [_player stop];
-    _playerManager = nil;
-    _player = nil;
-    self.containerView = nil;
-    self.controlView = nil;
+    if (_isLaunch) {
+        [self.containerView removeFromSuperview];
+        [self.controlView removeFromSuperview];
+        [_player stop];
+        _playerManager = nil;
+        _player = nil;
+        self.containerView = nil;
+        self.controlView = nil;
+    }
+    _isLaunch = NO;
 }
 -(UIView *)containerView{
     if (!_containerView) {

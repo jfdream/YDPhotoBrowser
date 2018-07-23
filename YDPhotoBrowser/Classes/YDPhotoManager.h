@@ -33,4 +33,5 @@
 @property (nonatomic,strong)ZFPlayerController * player;
 @property (nonatomic,strong)ZFPlayerControlView * controlView;
 @property (nonatomic,strong)UIView * containerView;
+@property (nonatomic,readonly,assign)BOOL isLaunch;
 @end

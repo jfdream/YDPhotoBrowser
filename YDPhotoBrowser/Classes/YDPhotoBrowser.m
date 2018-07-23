@@ -366,7 +366,6 @@
     }
     _parentViewController = [self.delegate photoBrowserParentViewController];
     [YDPhotoManager sharedManager].delegate = self;
-    [[YDPhotoManager sharedManager] launch];
     YDPhotoBrowserPresentationController * presentationController = [[YDPhotoBrowserPresentationController alloc]initWithPresentedViewController:self presentingViewController:_parentViewController];
     self.transitioningDelegate = presentationController;
     [_parentViewController presentViewController:self animated:YES completion:nil];
