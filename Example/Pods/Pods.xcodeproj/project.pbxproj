@@ -20,8 +20,8 @@
 		0FDB2B4F75591851F0F119EAE70B3F63 /* NSLayoutConstraint+MASDebugAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 8952682F2EE07E8B78F5C1C4AD3B6D92 /* NSLayoutConstraint+MASDebugAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		110EC677927876C56AC5DFA5B5F5555A /* ZFPlayerLogManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DE0FF08D6641322A6EC5B012963ED31 /* ZFPlayerLogManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13B6DFDCBC1D99C77CD10B708DDBB1F1 /* YDPhotoScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CD0F334E15C765D2AC9167B33B1D50 /* YDPhotoScrollView.m */; };
-		17811BD7210A109A00171A67 /* YDPhotoThumbnailPresentationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 17811BD5210A109A00171A67 /* YDPhotoThumbnailPresentationController.h */; };
-		17811BD8210A109A00171A67 /* YDPhotoThumbnailPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17811BD6210A109A00171A67 /* YDPhotoThumbnailPresentationController.m */; };
+		17811BDB210A111800171A67 /* YDPhotoThumbnailPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17811BD9210A111800171A67 /* YDPhotoThumbnailPresentationController.m */; };
+		17811BDC210A111800171A67 /* YDPhotoThumbnailPresentationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 17811BDA210A111800171A67 /* YDPhotoThumbnailPresentationController.h */; };
 		17D74BAF210387C100CF8128 /* YDPhotoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D74BAD210387C100CF8128 /* YDPhotoManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		17D74BB0210387C100CF8128 /* YDPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74BAE210387C100CF8128 /* YDPhotoManager.m */; };
 		17D74BB42104CBA400CF8128 /* YDPhotoThumbnailViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D74BB22104CBA400CF8128 /* YDPhotoThumbnailViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -282,8 +282,8 @@
 		16BFBD82971429C4954E5DACB50781F0 /* ZFPlayerNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ZFPlayerNotification.m; path = ZFPlayer/Classes/Core/ZFPlayerNotification.m; sourceTree = "<group>"; };
 		17465E52D06FC3B06857C68590C0A94F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		17811BD2210A0C3200171A67 /* YDPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YDPhotoBrowser.bundle; path = YDPhotoBrowser/Assets/YDPhotoBrowser.bundle; sourceTree = "<group>"; };
-		17811BD5210A109A00171A67 /* YDPhotoThumbnailPresentationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YDPhotoThumbnailPresentationController.h; sourceTree = "<group>"; };
-		17811BD6210A109A00171A67 /* YDPhotoThumbnailPresentationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YDPhotoThumbnailPresentationController.m; sourceTree = "<group>"; };
+		17811BD9210A111800171A67 /* YDPhotoThumbnailPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YDPhotoThumbnailPresentationController.m; path = YDPhotoBrowser/Classes/YDPhotoThumbnailPresentationController.m; sourceTree = "<group>"; };
+		17811BDA210A111800171A67 /* YDPhotoThumbnailPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YDPhotoThumbnailPresentationController.h; path = YDPhotoBrowser/Classes/YDPhotoThumbnailPresentationController.h; sourceTree = "<group>"; };
 		17D74BAD210387C100CF8128 /* YDPhotoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YDPhotoManager.h; path = YDPhotoBrowser/Classes/YDPhotoManager.h; sourceTree = "<group>"; };
 		17D74BAE210387C100CF8128 /* YDPhotoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = YDPhotoManager.m; path = YDPhotoBrowser/Classes/YDPhotoManager.m; sourceTree = "<group>"; };
 		17D74BB22104CBA400CF8128 /* YDPhotoThumbnailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YDPhotoThumbnailViewController.h; path = YDPhotoBrowser/Classes/YDPhotoThumbnailViewController.h; sourceTree = "<group>"; };
@@ -758,8 +758,8 @@
 				17D74BAE210387C100CF8128 /* YDPhotoManager.m */,
 				30517A35140A04055BEDF0C0EEB98F8A /* YDPhotoBrowserPresentationController.h */,
 				153FCFF9C3209DE94F50E5C6FA98A8E3 /* YDPhotoBrowserPresentationController.m */,
-				17811BD5210A109A00171A67 /* YDPhotoThumbnailPresentationController.h */,
-				17811BD6210A109A00171A67 /* YDPhotoThumbnailPresentationController.m */,
+				17811BDA210A111800171A67 /* YDPhotoThumbnailPresentationController.h */,
+				17811BD9210A111800171A67 /* YDPhotoThumbnailPresentationController.m */,
 				E3EA8E83CAF266CCD07486DA5EFAB5D2 /* YDPhotoScrollView.h */,
 				00CD0F334E15C765D2AC9167B33B1D50 /* YDPhotoScrollView.m */,
 				17D74BB22104CBA400CF8128 /* YDPhotoThumbnailViewController.h */,
@@ -1035,7 +1035,7 @@
 				17D74BAF210387C100CF8128 /* YDPhotoManager.h in Headers */,
 				17D74BB42104CBA400CF8128 /* YDPhotoThumbnailViewController.h in Headers */,
 				444CE331CD65D8339B50C3F06B44F76E /* YDPhotoScrollView.h in Headers */,
-				17811BD7210A109A00171A67 /* YDPhotoThumbnailPresentationController.h in Headers */,
+				17811BDC210A111800171A67 /* YDPhotoThumbnailPresentationController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1346,7 +1346,7 @@
 				17D74BB52104CBA400CF8128 /* YDPhotoThumbnailViewController.m in Sources */,
 				F33962FCA2415D407AB0CE7D63F06347 /* YDPhotoBrowser-dummy.m in Sources */,
 				467BFB9C3B1CA0929E0E678A7FD2277C /* YDPhotoBrowser.m in Sources */,
-				17811BD8210A109A00171A67 /* YDPhotoThumbnailPresentationController.m in Sources */,
+				17811BDB210A111800171A67 /* YDPhotoThumbnailPresentationController.m in Sources */,
 				BAE67F6AE1C81D3C4797E586DDCAC1B0 /* YDPhotoBrowserPresentationController.m in Sources */,
 				17D74BB0210387C100CF8128 /* YDPhotoManager.m in Sources */,
 				13B6DFDCBC1D99C77CD10B708DDBB1F1 /* YDPhotoScrollView.m in Sources */,
