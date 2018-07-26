@@ -20,6 +20,10 @@ it, simply add the following line to your Podfile:
 pod 'YDPhotoBrowser'
 ```
 
+## Introduce
+
+A easy to use frameworks for browsering image,include rotation,zoom in and zoom out etc.(support video preview,like wechat)
+
 ## Author
 
 jfdream1992@126.com

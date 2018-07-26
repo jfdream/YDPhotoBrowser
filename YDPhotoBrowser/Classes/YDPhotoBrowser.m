@@ -45,7 +45,7 @@
     
     UIPageControl * pageControl;
     UIImageView * _topImageView;
-
+    
     UIActivityIndicatorView * _indicatorView;
     BOOL isPaning;
     UIViewController * _parentViewController;
@@ -72,14 +72,14 @@
         _pagingScrollView.showsVerticalScrollIndicator = NO;
         _pagingScrollView.backgroundColor = [UIColor clearColor];
         [self.view addSubview:_pagingScrollView];
-
+        
         [_pagingScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(@(-PADDING));
             make.right.equalTo(self.view).offset(PADDING);
             make.height.equalTo(self.view);
             make.top.equalTo(self.view);
         }];
-
+        
         pageControl = [[UIPageControl alloc]init];
         [self.view addSubview:pageControl];
         [pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -197,6 +197,8 @@
     isPaning = YES;
     if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
         _isPlaying = NO;
+        YDPhotoBrowserPresentationController * _presentationController = (YDPhotoBrowserPresentationController *)self.presentationController;
+        _presentationController.dimmingView.alpha = 1.f;
         if ([YDPhotoManager sharedManager].playerManager.isPlaying) {
             _containerViewSupper = [YDPhotoManager sharedManager].containerView.superview;
             [[YDPhotoManager sharedManager].containerView removeFromSuperview];
@@ -273,12 +275,18 @@
             [self dismissViewControllerAnimated:YES completion:nil];
         }
         else{
+            self.view.alpha = 0.f;
+            self.view.hidden = NO;
+            _pagingScrollView.hidden = YES;
+            pageControl.hidden = YES;
             [UIView animateWithDuration:0.3 animations:^{
                 self->_topImageView.frame = [UIScreen mainScreen].bounds;
+                self.view.alpha = 1.f;
                 [YDPhotoManager sharedManager].containerView.frame = [UIScreen mainScreen].bounds;
             } completion:^(BOOL finished) {
-                self.view.hidden = NO;
                 self->_topImageView.hidden = YES;
+                _pagingScrollView.hidden = NO;
+                pageControl.hidden = NO;
                 [[YDPhotoManager sharedManager].containerView removeFromSuperview];
                 [self->_containerViewSupper addSubview:[YDPhotoManager sharedManager].containerView];
             }];
@@ -369,7 +377,7 @@
     YDPhotoBrowserPresentationController * presentationController = [[YDPhotoBrowserPresentationController alloc]initWithPresentedViewController:self presentingViewController:_parentViewController];
     self.transitioningDelegate = presentationController;
     [_parentViewController presentViewController:self animated:YES completion:nil];
-
+    
     _totalPage = [self.delegate numberOfPagesInPhotoBrowser:self];
     _screenFrame = [UIScreen mainScreen].bounds;
     _pagingScrollView.contentSize = CGSizeMake((_screenFrame.size.width + 2*PADDING) * _totalPage, _screenFrame.size.height);
@@ -393,20 +401,25 @@
         _photoScrollView.photo = photo;
         _photoScrollView.index = i;
         _photoScrollView.tapDelegate = self;
-
+        
         [_pagingScrollView addSubview:_photoScrollView];
         [_recyclePhotos addObject:_photoScrollView];
     }
     if (_currentIndex != 0) {
         CGFloat xOffset = (_screenFrame.size.width + 2*PADDING) * _currentIndex;
-        _pagingScrollView.contentOffset = CGPointMake(xOffset, 0);
+        //        加上该行代码加载最后的 scrollView，避免视图无法加载出来的情况
+        _currentIndex = _currentIndex - 1;
         [self reusePages];
+        //        视图加载出来之后再恢复到正常 _currentIndex
+        _currentIndex = _currentIndex + 1;
+        //        滑动到指定的视图
+        _pagingScrollView.contentOffset = CGPointMake(xOffset, 0);
     }
     if([self.delegate respondsToSelector:@selector(photoBrowser:showFromIndex:)]){
         UIWindow * topWindow = [UIApplication sharedApplication].delegate.window;
         UIImageView * fromImageView = [self.delegate photoBrowser:self showFromIndex:_currentIndex];
         CGRect frame = [fromImageView.superview convertRect:fromImageView.frame toView:topWindow];
-
+        
         if ([self.delegate respondsToSelector:@selector(photoBrowser:showFromIndexFromCell:)]) {
             NSIndexPath * indexPath = [self.delegate photoBrowser:self showFromIndexFromCell:_currentIndex];
             id cell = fromImageView.superview;
