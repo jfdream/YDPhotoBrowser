@@ -13,8 +13,16 @@
 #import "ZFAVPlayerManager.h"
 #import "ZFPlayerController.h"
 #import "ZFPlayerControlView.h"
+#import "YDPhotoThumbnailViewController.h"
 #import "ZFUtilities.h"
 #import "YDPhotoBrowserPresentationController.h"
+
+#define IMAGE(file)               [@"YDPhotoBrowser.bundle" stringByAppendingPathComponent:file]
+
+#define IMAGE_FRAMEWORK(file)      [@"Frameworks/YDPhotoBrowser.framework/YDPhotoBrowser.bundle" stringByAppendingPathComponent:file]
+
+#define YDPhotoBrowser_Image(file)                 [UIImage imageNamed:IMAGE(file)] ? :[UIImage imageNamed:IMAGE_FRAMEWORK(file)]
+
 #define MAX_SHOW_NUMBER          5
 #define MAX_DURATION             0.3
 @implementation UIDevice(JFDREAM)
@@ -57,6 +65,8 @@
     CGSize _videoSize;
     
     UIView * _containerViewSupper;
+    UIButton * _downloadImageButton;
+    UIButton * _thumbnailImageButton;
     
 }
 -(id)init{
@@ -91,8 +101,53 @@
         _topImageView = [[UIImageView alloc]init];
         _topImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.view addSubview:_topImageView];
+        
+        _downloadImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_downloadImageButton addTarget:self action:@selector(downloadButtonClick) forControlEvents:UIControlEventTouchUpInside];
+        UIImage * image = YDPhotoBrowser_Image(@"yd_photo_download");
+        [_downloadImageButton setImage:image forState:UIControlStateNormal];
+      
+        [self.view addSubview:_downloadImageButton];
+        [_downloadImageButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.view).offset(-20);
+            make.width.equalTo(@30);
+            make.height.equalTo(@30);
+            make.bottom.equalTo(self.view).offset([UIDevice isX]? -26: -16);
+        }];
+        
+        image = YDPhotoBrowser_Image(@"yd_photo_thumbnail");
+        _thumbnailImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_thumbnailImageButton addTarget:self action:@selector(thumbnailButtonClick) forControlEvents:UIControlEventTouchUpInside];
+        [_thumbnailImageButton setImage:image forState:UIControlStateNormal];
+        [self.view addSubview:_thumbnailImageButton];
+        
+        [_thumbnailImageButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.view).offset(-20);
+            make.width.equalTo(@30);
+            make.height.equalTo(@30);
+            make.top.equalTo([UIDevice isX]?@36:@16);
+        }];
+        
     }
     return self;
+}
+-(void)thumbnailButtonClick{
+    if ([self.delegate respondsToSelector:@selector(photoBrowser:thumbnailButtonClick:)]) {
+        [self.delegate photoBrowser:self thumbnailButtonClick:_thumbnailImageButton];
+    }
+    else{
+        YDPhotoThumbnailViewController * tvc = [[YDPhotoThumbnailViewController alloc]init];
+        [self.navigationController pushViewController:tvc animated:YES];
+    }
+    
+}
+-(void)downloadButtonClick{
+    if ([self.delegate respondsToSelector:@selector(photoBrowser:downloadButtonClick:)]) {
+        [self.delegate photoBrowser:self downloadButtonClick:_downloadImageButton];
+    }
+    else{
+        
+    }
 }
 -(void)view:(UIView *)view doubleTapDetected:(UITapGestureRecognizer *)touch{
     
@@ -377,7 +432,7 @@
     YDPhotoBrowserPresentationController * presentationController = [[YDPhotoBrowserPresentationController alloc]initWithPresentedViewController:self presentingViewController:_parentViewController];
     self.transitioningDelegate = presentationController;
     [_parentViewController presentViewController:self animated:YES completion:nil];
-    
+    _currentIndex = 0;
     _totalPage = [self.delegate numberOfPagesInPhotoBrowser:self];
     _screenFrame = [UIScreen mainScreen].bounds;
     _pagingScrollView.contentSize = CGSizeMake((_screenFrame.size.width + 2*PADDING) * _totalPage, _screenFrame.size.height);
@@ -389,12 +444,16 @@
     if ([self.delegate respondsToSelector:@selector(startIndexOfPagesInPhotoBrowser:)]) {
         _currentIndex = [self.delegate startIndexOfPagesInPhotoBrowser:self];
     }
-    else{
-        _currentIndex = 0;
-    }
     _currentLoadMinIndex = 0;
     _currentLoadMaxIndex = (showNumber - 1);
-    for (NSInteger i=0; i<showNumber; i++) {
+    NSInteger cellStart = 0;
+    if (!(_currentIndex < _currentLoadMaxIndex || _totalPage <= 5)) {
+        cellStart = _currentIndex - 3;
+        if ((_currentIndex+1) == _totalPage) {
+            cellStart -= 1;
+        }
+    }
+    for (NSInteger i = cellStart; i < cellStart + showNumber; i++) {
         YDPhoto * photo = [self.delegate photoBrowser:self photoAtIndex:i];
         CGRect frame = [self frameForPageAtIndex:i];
         YDPhotoScrollView * _photoScrollView = [[YDPhotoScrollView alloc]initWithFrame:frame];
@@ -405,14 +464,9 @@
         [_pagingScrollView addSubview:_photoScrollView];
         [_recyclePhotos addObject:_photoScrollView];
     }
+    
     if (_currentIndex != 0) {
         CGFloat xOffset = (_screenFrame.size.width + 2*PADDING) * _currentIndex;
-        //        加上该行代码加载最后的 scrollView，避免视图无法加载出来的情况
-        _currentIndex = _currentIndex - 1;
-        [self reusePages];
-        //        视图加载出来之后再恢复到正常 _currentIndex
-        _currentIndex = _currentIndex + 1;
-        //        滑动到指定的视图
         _pagingScrollView.contentOffset = CGPointMake(xOffset, 0);
     }
     if([self.delegate respondsToSelector:@selector(photoBrowser:showFromIndex:)]){

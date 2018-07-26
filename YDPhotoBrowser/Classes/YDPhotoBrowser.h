@@ -41,6 +41,8 @@
  */
 - (NSIndexPath *)photoBrowser:(YDPhotoBrowser *)photoBrowser hideToIndexFromCell:(NSInteger)toIndex;
 - (void)photoBrowser:(YDPhotoBrowser *)photoBrowser longPressImage:(UIImage *)pressImage;
+- (void)photoBrowser:(YDPhotoBrowser *)photoBrowser downloadButtonClick:(UIButton *)downloadButton;
+- (void)photoBrowser:(YDPhotoBrowser *)photoBrowser thumbnailButtonClick:(UIButton *)thumbnailButton;
 @end
 
 @interface YDPhotoBrowser : UIViewController

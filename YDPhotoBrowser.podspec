@@ -32,9 +32,9 @@ Pod::Spec.new do |s|
 
   s.source_files = 'YDPhotoBrowser/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'YDPhotoBrowser' => ['YDPhotoBrowser/Assets/*.png']
-  # }
+   s.resource_bundles = {
+     'YDPhotoBrowser' => ['YDPhotoBrowser/Assets/YDPhotoBrowser.bundle/*']
+   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

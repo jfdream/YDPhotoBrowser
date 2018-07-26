@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1774B3A22101E0EF0020F16C /* hello.png in Resources */ = {isa = PBXBuildFile; fileRef = 1774B3A12101E0EF0020F16C /* hello.png */; };
+		17811BD4210A0D3600171A67 /* YDPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 17811BD3210A0D3600171A67 /* YDPhotoBrowser.bundle */; };
 		17D74B902102DE2500CF8128 /* AAPLCustomPresentationSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B892102DE2500CF8128 /* AAPLCustomPresentationSecondViewController.m */; };
 		17D74B912102DE2500CF8128 /* AAPLCustomPresentationFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B8C2102DE2500CF8128 /* AAPLCustomPresentationFirstViewController.m */; };
 		17D74B922102DE2500CF8128 /* AAPLCustomPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D74B8D2102DE2500CF8128 /* AAPLCustomPresentationController.m */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		06D8EBF07F20B55F61E26186 /* Pods-YDPhotoBrowser_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YDPhotoBrowser_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YDPhotoBrowser_Example/Pods-YDPhotoBrowser_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1774B3A12101E0EF0020F16C /* hello.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hello.png; sourceTree = "<group>"; };
+		17811BD3210A0D3600171A67 /* YDPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = YDPhotoBrowser.bundle; path = ../../YDPhotoBrowser/Assets/YDPhotoBrowser.bundle; sourceTree = "<group>"; };
 		17D74B882102DE2400CF8128 /* AAPLCustomPresentationSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCustomPresentationSecondViewController.h; sourceTree = "<group>"; };
 		17D74B892102DE2500CF8128 /* AAPLCustomPresentationSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCustomPresentationSecondViewController.m; sourceTree = "<group>"; };
 		17D74B8A2102DE2500CF8128 /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				6003F59C195388D20070C39A /* YDAppDelegate.h */,
 				6003F59D195388D20070C39A /* YDAppDelegate.m */,
+				17811BD3210A0D3600171A67 /* YDPhotoBrowser.bundle */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* YDViewController.h */,
 				6003F5A6195388D20070C39A /* YDViewController.m */,
@@ -330,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17811BD4210A0D3600171A67 /* YDPhotoBrowser.bundle in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				1774B3A22101E0EF0020F16C /* hello.png in Resources */,
